@@ -30,6 +30,7 @@ namespace RazorCars.Web.Controllers
                 }).ToList()
 
             };
+            ViewBag.Model = model.Histories;
             return View(model);
         }
         

@@ -1,0 +1,37 @@
+﻿@model RazorCars.Web.Models.InventoryVM
+
+@{
+    ViewBag.Title = "RentalHistory";
+}
+
+<h2>RentalHistory</h2>
+
+<div>
+    <h4>InventoryVM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalStock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalStock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AvailableStock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AvailableStock)
+        </dd>
+
+        
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

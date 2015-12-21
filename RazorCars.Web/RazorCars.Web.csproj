@@ -313,6 +313,7 @@
     <Content Include="Views\CarTypes\RentalHistory.cshtml" />
     <Content Include="Views\Inventories\CreateCar.cshtml" />
     <Content Include="Views\Inventories\ListCarTypes.cshtml" />
+    <Content Include="Views\Inventories\RentalHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
