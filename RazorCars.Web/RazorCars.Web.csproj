@@ -209,6 +209,10 @@
     <Compile Include="Migrations\201512211810066_CreatedTables.Designer.cs">
       <DependentUpon>201512211810066_CreatedTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512211825442_AddedNullableDateTime.cs" />
+    <Compile Include="Migrations\201512211825442_AddedNullableDateTime.Designer.cs">
+      <DependentUpon>201512211825442_AddedNullableDateTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CarType.cs" />
@@ -314,6 +318,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201512211810066_CreatedTables.resx">
       <DependentUpon>201512211810066_CreatedTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512211825442_AddedNullableDateTime.resx">
+      <DependentUpon>201512211825442_AddedNullableDateTime.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
