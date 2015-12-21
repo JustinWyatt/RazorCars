@@ -44,6 +44,12 @@ namespace RazorCars.Web.Controllers
         }
 
         [HttpGet]
+        public ActionResult ListCarTypes()
+        {
+            return View(db.CarTypes.ToList());
+        }
+
+        [HttpGet]
         public ActionResult CreateCar()
         {
             return View(db.CarTypes.ToList());
@@ -52,20 +58,44 @@ namespace RazorCars.Web.Controllers
         [HttpPost]
         public ActionResult CreateCar(CarType car)
         {
+            var newCar = new CarType()
+            {
+                Make = car.Make,
+                Model = car.Model,
+                Year = car.Year
+                
+            };
 
-            return RedirectToAction("");
+            db.CarTypes.Add(newCar);
+            db.SaveChanges();
+            return RedirectToAction("ListCarTypes", "Inventories");
         }
 
         [HttpPost]
-        public ActionResult RentCar(int carTypeId)
+        public ActionResult RentCar(int inventoryId)
         {
-            return RedirectToAction("");
+            var inventory = db.Inventories.Find(inventoryId);
+            var newRental = new RentalHistory()
+            {
+                RentDate = DateTime.Now
+                
+            };
+            inventory.Histories.Add(newRental);
+            
+            db.SaveChanges();
+
+            return RedirectToAction("RentalHistory", "Inventories");
         }
 
         [HttpPost]
-        public ActionResult ReturnCar(int carTypeId)
+        public ActionResult ReturnCar(int rentalId)
         {
-            return RedirectToAction("");
+            var history = db.RentalHistories.Find(rentalId);
+
+            history.ReturnDate = DateTime.Now;
+            db.SaveChanges();
+
+            return RedirectToAction("RentalHistory", "Inventories");
         }
     }
 }
