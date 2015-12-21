@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RazorCars.Web;
 using RazorCars.Web.Controllers;
+using RazorCars.Web.Models;
 
 namespace RazorCars.Tests.Controllers
 {
@@ -49,6 +50,13 @@ namespace RazorCars.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void CountingAvailabeCars()
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            db.Users.Find(1);
         }
     }
 }
