@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace RazorCars.Web.Controllers
 {
+    [Authorize]
     public class InventoriesController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
@@ -52,23 +53,16 @@ namespace RazorCars.Web.Controllers
         [HttpGet]
         public ActionResult CreateCar()
         {
-            return View(db.CarTypes.ToList());
+            return View();
         }
 
         [HttpPost]
         public ActionResult CreateCar(CarType car)
         {
-            var newCar = new CarType()
-            {
-                Make = car.Make,
-                Model = car.Model,
-                Year = car.Year
-                
-            };
-
-            db.CarTypes.Add(newCar);
+            
+            db.CarTypes.Add(car);
             db.SaveChanges();
-            return RedirectToAction("ListCarTypes", "Inventories");
+            return RedirectToAction("ListCarTypes");
         }
 
         [HttpPost]
@@ -77,14 +71,15 @@ namespace RazorCars.Web.Controllers
             var inventory = db.Inventories.Find(inventoryId);
             var newRental = new RentalHistory()
             {
-                RentDate = DateTime.Now
+                RentDate = DateTime.Now,
+                Inventory = inventory
                 
             };
             inventory.Histories.Add(newRental);
             
             db.SaveChanges();
 
-            return RedirectToAction("RentalHistory", "Inventories");
+            return RedirectToAction("RentalHistory");
         }
 
         [HttpPost]
@@ -95,7 +90,7 @@ namespace RazorCars.Web.Controllers
             history.ReturnDate = DateTime.Now;
             db.SaveChanges();
 
-            return RedirectToAction("RentalHistory", "Inventories");
+            return RedirectToAction("RentalHistory");
         }
     }
 }

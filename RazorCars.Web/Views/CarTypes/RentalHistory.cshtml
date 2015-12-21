@@ -10,7 +10,9 @@
 <ul>
     @foreach (var history in Model.Histories)
     {
-        <li>@history.RentalDate  @history.ReturnDate @history.Id</li>
+        <li>@history.RentalDate</li>
+        <li>@history.ReturnDate</li>
+        <li>@Html.ActionLink("View Rentals", "RentalHistory", "Inventories", new { id = history.Id } )</li>
     }
 
 </ul>
