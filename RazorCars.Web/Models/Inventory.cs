@@ -9,7 +9,8 @@ namespace RazorCars.Web.Models
     {
         public int Id { get; set; }
         public int Stock { get; set; }
-        public CarType CarType { get; set; }
-        public Location Location { get; set; }
+        public virtual CarType CarType { get; set; }
+        public virtual Location Location { get; set; }
+        public virtual ICollection<RentalHistory> Histories { get; set; }
     }
 }

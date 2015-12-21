@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace RazorCars.Web.Controllers
 {
-    public class CarTypesController : Controller
+    public class InventoriesController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
@@ -17,32 +17,30 @@ namespace RazorCars.Web.Controllers
             return PartialView(db.CarTypes.ToList());
         }
 
-        public ActionResult RentalHistory(int carTypeId)
+        public ActionResult RentalHistory(int inventoryId)
         {
-            //Displays rental history for each car type
+            //Displays rental history for each inventory
+            var inventory = db.Inventories.Find(inventoryId);
 
-            var currentCarRentalHistory = db.RentalHistories.Where(x => x.Inventory.CarType.Id == carTypeId);
+            var model = new InventoryVM
+            {
+                TotalStock = inventory.Stock,
+                AvailableStock = inventory.Stock - inventory.Histories.Count(x => x.ReturnDate == null),
 
-            var carStock = currentCarRentalHistory.Select(x => x.Inventory.Stock).Count();
-            var nullDates = currentCarRentalHistory.Select(x => x.ReturnDate == null).Count();
-            var availableCars = carStock - nullDates;
+                Histories = inventory.Histories.Select(x => new RentalHistoryVM
+                {
+                    RentalDate = x.RentDate,
+                    ReturnDate = x.ReturnDate
+                }).ToList()
 
-            var rentalHistory = currentCarRentalHistory.Select(x => new RentalHistoryVM { Model = x.Inventory.CarType.Model,
-                                                                             Make = x.Inventory.CarType.Make,
-                                                                             Year = x.Inventory.CarType.Year,
-                                                                             LocationName = x.Inventory.Location.Name,
-                                                                             RentalDate = x.RentDate,
-                                                                             ReturnDate = (DateTime)x.ReturnDate,
-                                                                             TotalSupply = x.Inventory.Stock,
-                                                                             AvailableForRent = availableCars});
-            
-
-            return View(rentalHistory);
+            };
+            return View(model);
         }
 
-        public ActionResult InventoryStore()
-        {   
+        public ActionResult InventoryStore(int inventoryId)
+        {
+
             return View();
         }
-    }   
+    }
 }

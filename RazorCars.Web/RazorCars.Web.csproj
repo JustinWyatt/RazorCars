@@ -219,6 +219,7 @@
     <Compile Include="Models\CarType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Inventory.cs" />
+    <Compile Include="Models\InventoryVM.cs" />
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RentalHistory.cs" />
@@ -308,10 +309,10 @@
     <Content Include="Views\Shared\_History4MVC.cshtml" />
     <Content Include="Views\Shared\Pagination.cshtml" />
     <Content Include="Views\Shared\Pager.cshtml" />
+    <Content Include="Views\CarTypes\RentalHistory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\CarTypes\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
