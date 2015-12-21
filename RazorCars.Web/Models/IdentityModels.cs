@@ -17,6 +17,8 @@ namespace RazorCars.Web.Models
             return userIdentity;
         }
 
+        public Location Location { get; set; }
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -26,9 +28,17 @@ namespace RazorCars.Web.Models
         {
         }
 
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<Inventory> Inventories { get; set; }
+        public DbSet<CarType> CarTypes { get; set; }
+        public DbSet<RentalHistory> RentalHistories { get; set; }
+        public DbSet<Location> Locations { get; set; }
+
+
     }
 }
