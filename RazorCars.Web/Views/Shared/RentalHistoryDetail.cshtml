@@ -1,12 +1,30 @@
 ﻿@model  IEnumerable<RazorCars.Web.Models.RentalHistoryVM>
-<h3>Rental History</h3>
-
-<ul>
-    @foreach (var h in Model)
-    {
-        <li>@h.RentalDate.ToShortDateString() @(h.ReturnDate.HasValue ? h.ReturnDate.GetValueOrDefault().ToShortDateString() : "not returned" )</li>
-    }
-</ul>
+<h4>Rental History</h4>
 
 
+<div class="bs-example">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Rental Date</th>
+                <th>Return Date</th>
+            </tr>
+        </thead>
+        @foreach (var h in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@h.Id</td>
+                    <td>@h.RentalDate.ToShortDateString()</td>
+                    <td>@(h.ReturnDate.HasValue ? h.ReturnDate.GetValueOrDefault().ToShortDateString() : "" )</td>
+                    @if (h.ReturnDate == null)
+                    {
+                    <td>@Html.ActionLink("Return This Car", "ReturnCar", "Inventories", new { rentalid = h.Id }, htmlAttributes: new { @class = "return-car" })</td>
+                    }
+                </tr>
+            </tbody>
+        }
+    </table>
+</div>
 

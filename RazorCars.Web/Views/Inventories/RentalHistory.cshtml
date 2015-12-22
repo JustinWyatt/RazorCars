@@ -31,10 +31,25 @@
     </dl>
 </div>
 
+@Html.ActionLink("Rent This Car", "RentCar", "Inventories", new { inventoryid = Model.Id}, htmlAttributes: new { @class = "rent-car" })
+
+
 
 @Html.Partial("RentalHistoryDetail", Model.Histories)
 
-<p>
+@*<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@
+
+@section scripts{
+    <script>
+        $('.return-car').click(function () {
+            $(this).html("Car Returned!");
+        })
+
+        $('.rent-car').click(function () {
+            $(this).html("You Have Rented This Car!");
+        })
+    </script>
+    }

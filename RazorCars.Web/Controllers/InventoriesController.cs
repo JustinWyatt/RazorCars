@@ -104,8 +104,11 @@ namespace RazorCars.Web.Controllers
         public ActionResult ReturnCar(int rentalId)
         {
             var history = db.RentalHistories.Find(rentalId);
-
-            history.ReturnDate = DateTime.Now;
+            if (history.ReturnDate == null)
+            {
+                history.ReturnDate = DateTime.Now;
+            }
+            
             db.SaveChanges();
 
             return RedirectToAction("RentalHistory");
