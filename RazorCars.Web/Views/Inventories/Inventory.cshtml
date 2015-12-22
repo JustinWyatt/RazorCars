@@ -1,0 +1,55 @@
+﻿@model IEnumerable<RazorCars.Web.Models.StoreInventoryVM>
+
+@{
+    ViewBag.Title = "Inventory";
+}
+
+<h2>Inventory</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.InventoryId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Year)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Make)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Avaiable)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.InventoryId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Year)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Make)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Avaiable)
+        </td>
+        <td>
+            @Html.ActionLink("View Rentals", "RentalHistory", "Inventories", htmlAttributes: new { id= item.InventoryId })
+        </td>
+    </tr>
+}
+
+</table>

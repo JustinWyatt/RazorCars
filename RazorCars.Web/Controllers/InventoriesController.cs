@@ -11,18 +11,16 @@ namespace RazorCars.Web.Controllers
     public class InventoriesController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
-
-       
+               
         public ActionResult RentalHistory(int inventoryId)
         {
             //Displays rental history for each inventory
             var inventory = db.Inventories.Find(inventoryId);
 
-            var model = new InventoryVM
+           var model = new InventoryVM
             {
                 TotalStock = inventory.Stock,
                 AvailableStock = inventory.Stock - inventory.Histories.Count(x => x.ReturnDate == null),
-
                 Histories = inventory.Histories.Select(x => new RentalHistoryVM
                 {
                     RentalDate = x.RentDate,
@@ -30,7 +28,6 @@ namespace RazorCars.Web.Controllers
                 }).ToList()
 
             };
-            ViewBag.Model = model.Histories;
             return View(model);
         }
         

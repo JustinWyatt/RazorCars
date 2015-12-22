@@ -310,10 +310,10 @@
     <Content Include="Views\Shared\_History4MVC.cshtml" />
     <Content Include="Views\Shared\Pagination.cshtml" />
     <Content Include="Views\Shared\Pager.cshtml" />
-    <Content Include="Views\CarTypes\RentalHistory.cshtml" />
     <Content Include="Views\Inventories\CreateCar.cshtml" />
     <Content Include="Views\Inventories\ListCarTypes.cshtml" />
     <Content Include="Views\Inventories\RentalHistory.cshtml" />
+    <Content Include="Views\Inventories\Inventory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
