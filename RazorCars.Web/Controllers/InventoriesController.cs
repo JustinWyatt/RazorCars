@@ -46,6 +46,9 @@ namespace RazorCars.Web.Controllers
 
             var model = new InventoryVM
             {
+                Make = inventory.CarType.Make,
+                Model = inventory.CarType.Model,
+                Year = inventory.CarType.Year,
                 TotalStock = inventory.Stock,
                 AvailableStock = inventory.Stock - inventory.Histories.Count(x => x.ReturnDate == null),
                 Histories = inventory.Histories.Select(x => new RentalHistoryVM

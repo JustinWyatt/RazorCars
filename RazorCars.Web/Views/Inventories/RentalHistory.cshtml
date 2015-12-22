@@ -3,53 +3,56 @@
 @{
     ViewBag.Title = "RentalHistory";
 }
+<style>
+    .card-list {
+        display: flex;
+        width: 100%;
 
+    }
 
-<div>
-    <h4>InventoryVM</h4>
-    <hr />
-    <dl class="dl-horizontal">
+    .card-list__item{
+        width: 100%;
+
+        justify-content: center;
+    }
+
+    .row-card{
+        width: 100%;
+    }
+
+    .card-list__item {
+        flex: 1;
         
+    }
+</style>
+<ul class="card-list">
+    <li class="card-list__item">
+        <div>
+            <h5>@Model.TotalStock Total Cars In Stock</h5>
+            <h5>@Model.AvailableStock Cars Available For Rent</h5>
+        </div>
+    </li>
+    <li class="card-list__item">
+        <div class="row-card">
+            <div class="col s12 m6">
+                <div class="card blue-grey darken-1">                    
+                    <div class="card-content white-text">
+                        <div class="card-image">
+                            <img src="http://pictures.dealer.com/g/gillmanhondafortbend/1000/80f77f5d79d2c09693524a46447c7936x.jpg" />
+                        </div>
+                        <h4 class="card-title">@Model.Make @Model.Model @Model.Year</h4>
+                        <p>
+                            Rent this beautiful, illustrious Honda Accord.
+                        </p>
+                    </div>
+                    <div class="card-action">
+                        @Html.ActionLink("Rent This Car", "RentCar", "Inventories", new { inventoryid = Model.Id }, htmlAttributes: new { @class = "waves-effect waves-light btn" })
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TotalStock)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TotalStock)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AvailableStock)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AvailableStock)
-        </dd>
-
-        
-    </dl>
-</div>
-
-@Html.ActionLink("Rent This Car", "RentCar", "Inventories", new { inventoryid = Model.Id}, htmlAttributes: new { @class = "rent-car" })
-
-
-
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
 @Html.Partial("RentalHistoryDetail", Model.Histories)
 
-@*<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>*@
-
-@section scripts{
-    <script>
-        $('.return-car').click(function () {
-            $(this).html("Car Returned!");
-        })
-
-        $('.rent-car').click(function () {
-            $(this).html("You Have Rented This Car!");
-        })
-    </script>
-    }
