@@ -315,6 +315,7 @@
     <Content Include="Views\Inventories\Index.cshtml" />
     <Content Include="Views\Inventories\RentalHistory.cshtml" />
     <Content Include="Views\Shared\RentalHistoryDetail.cshtml" />
+    <Content Include="Views\Shared\_SideNavPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

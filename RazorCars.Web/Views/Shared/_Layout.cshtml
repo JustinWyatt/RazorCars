@@ -8,55 +8,56 @@
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.css">
 </head>
-
+@using Microsoft.AspNet.Identity
 <body>
-    <nav class="red lighten-1" role="navigation">
-        <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo">Razor Cars</a>
-            <ul class="right hide-on-med-and-down">
-                <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                <li>@Html.ActionLink("Registration", "Register", "Account")</li>
-            </ul>
+    <div class="row">
+        <nav class="red lighten-1" role="navigation">
+            <div class="nav-wrapper container">
+                <a id="logo-container" href="#" class="brand-logo">Razor Cars</a>
+                <ul class="right hide-on-med-and-down">
+                    @if (Request.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                        <li>@Html.ActionLink("Registration", "Register", "Account")</li>
+                    }
+                </ul>
 
-            <ul id="nav-mobile" class="side-nav">
-                <li><a href="#">Navbar Link</a></li>
-            </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-        </div>
-    </nav>
-
-   
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
-                    @Html.Partial("_LoginPartial")
+                <div class="col s12 m4 l3">
+                    <!-- materializecss.com/grid.html-->
+                    <!-- Grey navigation panel -->
+                    @Html.Partial("_SideNavPartial")
+                    @*<ul id="nav-mobile" class="side-nav">
+                            <li><a href="#">Navbar Link</a></li>
+                        </ul>
+                        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>*@
                 </div>
             </div>
-        </div>*@
-   
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Razor Cars</p>
-        </footer>
+
+        </nav>
+
     </div>
+
+
+    <!-- Teal page content  --> <!-- Accordance with materializecss.com/grid.html-->
+    <div class="col s12 m8 l9">
+        <div class="container body-content">
+            @RenderBody()
+            <hr />
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Razor Cars</p>
+            </footer>
+        </div>
+    </div>
+
 
     @Scripts.Render("~/bundles/jquery")
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.js"></script>
     @RenderSection("scripts", required: false)
 </body>
+
 </html>

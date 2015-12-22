@@ -3,33 +3,18 @@
 @{
     ViewBag.Title = "RentalHistory";
 }
-<style>
-    .card-list {
-        display: flex;
-        width: 100%;
 
-    }
 
-    .card-list__item{
-        width: 100%;
-
-        justify-content: center;
-    }
-
-    .row-card{
-        width: 100%;
-    }
-
-    .card-list__item {
-        flex: 1;
-        
-    }
-</style>
+<h1>@Model.Make @Model.Model @Model.Year</h1>
 <ul class="card-list">
     <li class="card-list__item">
         <div>
             <h5>@Model.TotalStock Total Cars In Stock</h5>
             <h5>@Model.AvailableStock Cars Available For Rent</h5>
+        </div>
+
+        <div class="rental-history">
+            @Html.Partial("RentalHistoryDetail", Model.Histories)
         </div>
     </li>
     <li class="card-list__item">
@@ -54,5 +39,4 @@
         </div>
     </li>
 </ul>
-@Html.Partial("RentalHistoryDetail", Model.Histories)
 

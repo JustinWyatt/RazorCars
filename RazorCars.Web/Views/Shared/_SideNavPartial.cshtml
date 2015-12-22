@@ -1,0 +1,26 @@
+﻿
+@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    <div class="box-nav valign-wrapper">
+        <ul id="slide-out" class="side-nav full">
+            <li>@Html.ActionLink("Index", "Index", "Inventories")</li>
+            <li>@Html.ActionLink("Cars", "CarTypeList", "Inventories")</li>
+        </ul>
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="large mdi-navigation-menu"></i></a>
+    </div>
+}
+
+<style>
+    .box-nav {
+        height: 200px;
+        width: 200px;
+    }
+</style>
+
+@section scripts{
+    <script>
+        $(".button-collapse").sideNav();
+    </script>
+
+}

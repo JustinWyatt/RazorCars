@@ -20,7 +20,7 @@
                     <td>@(h.ReturnDate.HasValue ? h.ReturnDate.GetValueOrDefault().ToShortDateString() : "" )</td>
                     @if (h.ReturnDate == null)
                     {
-                    <td>@Html.ActionLink("Return This Car", "ReturnCar", "Inventories", new { rentalid = h.Id }, htmlAttributes: new { @class = "return-car" })</td>
+                    <td>@Html.ActionLink("Return This Car", "ReturnCar", "Inventories", new { rentalid = h.Id }, htmlAttributes: new { @class = "waves-effect waves-light btn" })</td>
                     }
                 </tr>
             </tbody>

@@ -46,6 +46,7 @@ namespace RazorCars.Web.Controllers
 
             var model = new InventoryVM
             {
+                Id = inventory.Id,
                 Make = inventory.CarType.Make,
                 Model = inventory.CarType.Model,
                 Year = inventory.CarType.Year,
@@ -53,6 +54,7 @@ namespace RazorCars.Web.Controllers
                 AvailableStock = inventory.Stock - inventory.Histories.Count(x => x.ReturnDate == null),
                 Histories = inventory.Histories.Select(x => new RentalHistoryVM
                 {
+                    Id = x.Id,
                     RentalDate = x.RentDate,
                     ReturnDate = x.ReturnDate
                 }).ToList()
@@ -86,7 +88,7 @@ namespace RazorCars.Web.Controllers
             return RedirectToAction("ListCarTypes");
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult RentCar(int inventoryId)
         {
             var inventory = db.Inventories.Find(inventoryId);
@@ -100,10 +102,10 @@ namespace RazorCars.Web.Controllers
 
             db.SaveChanges();
 
-            return RedirectToAction("RentalHistory");
+            return RedirectToAction("RentalHistory", new { id= inventoryId});
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult ReturnCar(int rentalId)
         {
             var history = db.RentalHistories.Find(rentalId);
@@ -114,7 +116,7 @@ namespace RazorCars.Web.Controllers
             
             db.SaveChanges();
 
-            return RedirectToAction("RentalHistory");
+            return RedirectToAction("RentalHistory", new { id = history.Inventory.Id } );
         }
     }
 }
