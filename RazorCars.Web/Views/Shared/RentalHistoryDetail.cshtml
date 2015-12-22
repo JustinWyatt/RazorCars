@@ -1,0 +1,12 @@
+﻿@model  IEnumerable<RazorCars.Web.Models.RentalHistoryVM>
+<h3>Rental History</h3>
+
+<ul>
+    @foreach (var h in Model)
+    {
+        <li>@h.RentalDate.ToShortDateString() @(h.ReturnDate.HasValue ? h.ReturnDate.GetValueOrDefault().ToShortDateString() : "not returned" )</li>
+    }
+</ul>
+
+
+

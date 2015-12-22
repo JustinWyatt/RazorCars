@@ -1,4 +1,5 @@
-﻿using RazorCars.Web.Models;
+﻿using Microsoft.AspNet.Identity;
+using RazorCars.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,13 +12,39 @@ namespace RazorCars.Web.Controllers
     public class InventoriesController : Controller
     {
         ApplicationDbContext db = new ApplicationDbContext();
-               
-        public ActionResult RentalHistory(int inventoryId)
+        string CurrentUserId;
+
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            if (User.Identity.IsAuthenticated)
+                CurrentUserId = User.Identity.GetUserId();
+
+            base.OnActionExecuting(filterContext);
+        }
+
+        [HttpGet]
+        public ActionResult Index()
+        {
+            var model = db.Users.Find(CurrentUserId).Location.Inventories
+                        .Select(i => new StoreInventoryVM
+                        {
+                            Avaiable = i.Stock - i.Histories.Count(x => x.ReturnDate == null),
+                            InventoryId = i.Id,
+                            Make = i.CarType.Make,
+                            Model = i.CarType.Model,
+                            Year = i.CarType.Year
+                        }).ToList();
+
+            return View(model);
+        }
+
+
+        public ActionResult RentalHistory(int id)
         {
             //Displays rental history for each inventory
-            var inventory = db.Inventories.Find(inventoryId);
+            var inventory = db.Inventories.Find(id);
 
-           var model = new InventoryVM
+            var model = new InventoryVM
             {
                 TotalStock = inventory.Stock,
                 AvailableStock = inventory.Stock - inventory.Histories.Count(x => x.ReturnDate == null),
@@ -28,19 +55,12 @@ namespace RazorCars.Web.Controllers
                 }).ToList()
 
             };
+
+
             return View(model);
         }
-        
-        [HttpGet]    
-        public ActionResult Inventory(int locationId)
-        {
-            var model = db.Inventories.Where(x => x.Location.Id == locationId).Select(i => new StoreInventoryVM { Avaiable = i.Stock - i.Histories.Count(x => x.ReturnDate == null),
-                                                                                                                  InventoryId = i.Id,
-                                                                                                                  Make = i.CarType.Make,
-                                                                                                                  Model = i.CarType.Model,
-                                                                                                                  Year = i.CarType.Year }).ToList();
-            return View(model);
-        }
+
+      
 
         [HttpGet]
         public ActionResult ListCarTypes()
@@ -57,7 +77,7 @@ namespace RazorCars.Web.Controllers
         [HttpPost]
         public ActionResult CreateCar(CarType car)
         {
-            
+
             db.CarTypes.Add(car);
             db.SaveChanges();
             return RedirectToAction("ListCarTypes");
@@ -71,10 +91,10 @@ namespace RazorCars.Web.Controllers
             {
                 RentDate = DateTime.Now,
                 Inventory = inventory
-                
+
             };
             inventory.Histories.Add(newRental);
-            
+
             db.SaveChanges();
 
             return RedirectToAction("RentalHistory");

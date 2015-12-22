@@ -312,8 +312,9 @@
     <Content Include="Views\Shared\Pager.cshtml" />
     <Content Include="Views\Inventories\CreateCar.cshtml" />
     <Content Include="Views\Inventories\ListCarTypes.cshtml" />
+    <Content Include="Views\Inventories\Index.cshtml" />
     <Content Include="Views\Inventories\RentalHistory.cshtml" />
-    <Content Include="Views\Inventories\Inventory.cshtml" />
+    <Content Include="Views\Shared\RentalHistoryDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

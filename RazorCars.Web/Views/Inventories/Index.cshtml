@@ -47,7 +47,7 @@
             @Html.DisplayFor(modelItem => item.Avaiable)
         </td>
         <td>
-            @Html.ActionLink("View Rentals", "RentalHistory", "Inventories", htmlAttributes: new { id= item.InventoryId })
+            @Html.ActionLink("View Rentals", "RentalHistory", "Inventories", new { id = item.InventoryId }, null)
         </td>
     </tr>
 }
