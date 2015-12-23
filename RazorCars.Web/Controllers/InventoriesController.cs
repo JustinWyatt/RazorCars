@@ -46,6 +46,8 @@ namespace RazorCars.Web.Controllers
 
             var model = new InventoryVM
             {
+                Photo = inventory.CarType.Photo,
+                Description = inventory.CarType.Description,
                 Id = inventory.Id,
                 Make = inventory.CarType.Make,
                 Model = inventory.CarType.Model,
@@ -64,9 +66,7 @@ namespace RazorCars.Web.Controllers
 
             return View(model);
         }
-
-      
-
+        
         [HttpGet]
         public ActionResult ListCarTypes()
         {
@@ -117,6 +117,34 @@ namespace RazorCars.Web.Controllers
             db.SaveChanges();
 
             return RedirectToAction("RentalHistory", new { id = history.Inventory.Id } );
+        }
+
+        public ActionResult UploadImage()
+        {
+            return PartialView();
+        }
+
+        public ActionResult UploadImage(Image img, HttpPostedFileBase file, int carTypeId)
+        {
+            var car = db.CarTypes.Find(carTypeId);
+            if (ModelState.IsValid)
+            {
+                if (file != null)
+                {
+                    file.SaveAs(HttpContext.Server.MapPath("~/Images/")
+                                                          + file.FileName);
+                    img.ImagePath = file.FileName;
+                }
+                car.Images.Add(img);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(img);
+        }
+
+        public ActionResult ViewImages (int carTypeId)
+        {
+            return PartialView();
         }
     }
 }

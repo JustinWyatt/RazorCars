@@ -11,14 +11,19 @@
 @using Microsoft.AspNet.Identity
 <body>
     <div class="row">
-        <nav class="red lighten-1" role="navigation">
+        <nav class="red darken-1" role="navigation">
             <div class="nav-wrapper container">
-                <a id="logo-container" href="#" class="brand-logo">Razor Cars</a>
+                @Html.ActionLink("Razor Cars", "Home", "Index", htmlAttributes: new { @class = "brand-logo", id = "logo-container" })
+
                 <ul class="right hide-on-med-and-down">
                     @if (Request.IsAuthenticated)
                     {
-                        <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
-                        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                        }   
                     }
                     else
                     {
@@ -26,22 +31,11 @@
                         <li>@Html.ActionLink("Registration", "Register", "Account")</li>
                     }
                 </ul>
-
-                <div class="col s12 m4 l3">
-                    <!-- materializecss.com/grid.html-->
-                    <!-- Grey navigation panel -->
-                    @Html.Partial("_SideNavPartial")
-                    @*<ul id="nav-mobile" class="side-nav">
-                            <li><a href="#">Navbar Link</a></li>
-                        </ul>
-                        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>*@
-                </div>
             </div>
-
         </nav>
-
     </div>
 
+    @Html.Partial("_SideNavPartial")
 
     <!-- Teal page content  --> <!-- Accordance with materializecss.com/grid.html-->
     <div class="col s12 m8 l9">
@@ -58,6 +52,13 @@
     @Scripts.Render("~/bundles/jquery")
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.js"></script>
     @RenderSection("scripts", required: false)
+
+    <script>
+        // Initialize collapse button
+        $(".button-collapse").sideNav();
+        // Initialize collapsible
+        $('.collapsible').collapsible();
+    </script>
 </body>
 
 </html>

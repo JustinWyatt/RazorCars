@@ -23,16 +23,20 @@
                 <div class="card blue-grey darken-1">                    
                     <div class="card-content white-text">
                         <div class="card-image">
-                            <img src="http://pictures.dealer.com/g/gillmanhondafortbend/1000/80f77f5d79d2c09693524a46447c7936x.jpg" />
+                            <img src="@Model.Photo" />
                         </div>
                         <h4 class="card-title">@Model.Make @Model.Model @Model.Year</h4>
                         <p>
-                            Rent this beautiful, illustrious Honda Accord.
+                            @Model.Description
                         </p>
                     </div>
                     <div class="card-action">
-                        @Html.ActionLink("Rent This Car", "RentCar", "Inventories", new { inventoryid = Model.Id }, htmlAttributes: new { @class = "waves-effect waves-light btn" })
+                        @if (Model.AvailableStock > 0)
+                        {
+                            @Html.ActionLink("Rent This Car", "RentCar", "Inventories", new { inventoryid = Model.Id }, htmlAttributes: new { @class = "waves-effect waves-light btn" })
 
+                        }
+                        
                     </div>
                 </div>
             </div>

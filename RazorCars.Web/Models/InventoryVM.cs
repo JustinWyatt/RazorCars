@@ -18,6 +18,8 @@ namespace RazorCars.Web.Models
         public int Year { get; set;}
         public int TotalStock { get; set; }
         public int AvailableStock { get; set; }
+        public string Photo { get; set; }
+        public string Description { get; set; }
         public ICollection<RentalHistoryVM> Histories { get; set; }
     }
 }
