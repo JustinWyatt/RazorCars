@@ -329,6 +329,7 @@
     <Content Include="Views\Inventories\RentalHistory.cshtml" />
     <Content Include="Views\Shared\RentalHistoryDetail.cshtml" />
     <Content Include="Views\Shared\_SideNavPartial.cshtml" />
+    <Content Include="Views\Inventories\UploadImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

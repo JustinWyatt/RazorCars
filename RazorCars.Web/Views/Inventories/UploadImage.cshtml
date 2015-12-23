@@ -1,0 +1,18 @@
+﻿@model RazorCars.Web.Models.Image
+
+<h2>Upload Image</h2>
+@using (Html.BeginForm("UploadImage", "Image", null, FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Image</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ImagePath)
+        </div>
+        <div class="editor-field">
+            <input id="ImagePath" title="Upload a product image" type="file" name="file" />
+        </div>
+        <p><input type="submit" value="Upload Image" /></p>
+    </fieldset>
+}

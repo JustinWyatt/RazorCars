@@ -98,9 +98,7 @@ namespace RazorCars.Web.Controllers
 
             };
             inventory.Histories.Add(newRental);
-
             db.SaveChanges();
-
             return RedirectToAction("RentalHistory", new { id= inventoryId});
         }
 
@@ -118,6 +116,7 @@ namespace RazorCars.Web.Controllers
             return RedirectToAction("RentalHistory", new { id = history.Inventory.Id } );
         }
 
+        [HttpGet]
         public ActionResult UploadImage()
         {
             return PartialView();
@@ -127,7 +126,8 @@ namespace RazorCars.Web.Controllers
         {
             return PartialView();
         }
-                
+        
+        [HttpPost]
         public ActionResult UploadImage(Image img, HttpPostedFileBase file, int carTypeId)
         {
             var car = db.CarTypes.Find(carTypeId);
