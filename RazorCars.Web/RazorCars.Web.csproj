@@ -218,6 +218,14 @@
     <Compile Include="Migrations\201512222205518_UpdatedTables.Designer.cs">
       <DependentUpon>201512222205518_UpdatedTables.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512230249073_AddedImages.cs" />
+    <Compile Include="Migrations\201512230249073_AddedImages.Designer.cs">
+      <DependentUpon>201512230249073_AddedImages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512230250378_ImagesDbSet.cs" />
+    <Compile Include="Migrations\201512230250378_ImagesDbSet.Designer.cs">
+      <DependentUpon>201512230250378_ImagesDbSet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CarType.cs" />
@@ -339,6 +347,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512222205518_UpdatedTables.resx">
       <DependentUpon>201512222205518_UpdatedTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512230249073_AddedImages.resx">
+      <DependentUpon>201512230249073_AddedImages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512230250378_ImagesDbSet.resx">
+      <DependentUpon>201512230250378_ImagesDbSet.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -38,7 +38,7 @@ namespace RazorCars.Web.Models
         public DbSet<CarType> CarTypes { get; set; }
         public DbSet<RentalHistory> RentalHistories { get; set; }
         public DbSet<Location> Locations { get; set; }
-
+        public DbSet<Image> Images { get; set; }
 
     }
 }

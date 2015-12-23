@@ -46,7 +46,6 @@ namespace RazorCars.Web.Controllers
 
             var model = new InventoryVM
             {
-                Photo = inventory.CarType.Photo,
                 Description = inventory.CarType.Description,
                 Id = inventory.Id,
                 Make = inventory.CarType.Make,
@@ -124,6 +123,11 @@ namespace RazorCars.Web.Controllers
             return PartialView();
         }
 
+        public ActionResult ViewImages(int carTypeId)
+        {
+            return PartialView();
+        }
+                
         public ActionResult UploadImage(Image img, HttpPostedFileBase file, int carTypeId)
         {
             var car = db.CarTypes.Find(carTypeId);
@@ -140,11 +144,6 @@ namespace RazorCars.Web.Controllers
                 return RedirectToAction("Index");
             }
             return View(img);
-        }
-
-        public ActionResult ViewImages (int carTypeId)
-        {
-            return PartialView();
-        }
+        }        
     }
 }
