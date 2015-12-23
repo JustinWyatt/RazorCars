@@ -11,10 +11,17 @@
 @using Microsoft.AspNet.Identity
 <body>
     <div class="row">
-        <nav class="red darken-1" role="navigation">
+        <ul id="dropdown1" class="dropdown-content">
+            <li>@Html.ActionLink("Account Info", "Index", "Manage")</li>
+            <li class="divider"></li>
+        </ul>
+        <ul id="dropdown2" class="dropdown-content">
+            <li>@Html.ActionLink("Inventories", "Index", "Inventories")</li>
+            <li class="divider"></li>
+        </ul>
+        <nav @(Request.IsAuthenticated ? "@class='red lighten-1'" : "@class='red darken-1'") role="navigation">
             <div class="nav-wrapper container">
-                @Html.ActionLink("Razor Cars", "Home", "Index", htmlAttributes: new { @class = "brand-logo", id = "logo-container" })
-
+                @Html.ActionLink((Request.IsAuthenticated ? "Razor Administration Portal" : "Razor Cars"), "Home", "Index", htmlAttributes: new { @class = "brand-logo", id = "logo-container" })
                 <ul class="right hide-on-med-and-down">
                     @if (Request.IsAuthenticated)
                     {
@@ -23,7 +30,9 @@
                             @Html.AntiForgeryToken()
                             <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
                             <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-                        }   
+                            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Account<i class="material-icons right">arrow_drop_down</i></a></li>
+                            <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Administration<i class="material-icons right">arrow_drop_down</i></a></li>
+                        }
                     }
                     else
                     {
@@ -42,9 +51,12 @@
         <div class="container body-content">
             @RenderBody()
             <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - Razor Cars</p>
-            </footer>
+            @if (!Request.IsAuthenticated)
+            {
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - Razor Cars</p>
+                </footer>
+            }
         </div>
     </div>
 
@@ -58,6 +70,8 @@
         $(".button-collapse").sideNav();
         // Initialize collapsible
         $('.collapsible').collapsible();
+
+        $(".dropdown-button").dropdown();
     </script>
 </body>
 

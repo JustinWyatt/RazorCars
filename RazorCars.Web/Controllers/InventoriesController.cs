@@ -38,7 +38,6 @@ namespace RazorCars.Web.Controllers
             return View(model);
         }
 
-
         public ActionResult RentalHistory(int id)
         {
             //Displays rental history for each inventory
@@ -61,11 +60,10 @@ namespace RazorCars.Web.Controllers
                 }).ToList()
 
             };
-
-
+            
             return View(model);
         }
-        
+
         [HttpGet]
         public ActionResult ListCarTypes()
         {
@@ -99,7 +97,7 @@ namespace RazorCars.Web.Controllers
             };
             inventory.Histories.Add(newRental);
             db.SaveChanges();
-            return RedirectToAction("RentalHistory", new { id= inventoryId});
+            return RedirectToAction("RentalHistory", new { id = inventoryId });
         }
 
         [HttpGet]
@@ -110,10 +108,10 @@ namespace RazorCars.Web.Controllers
             {
                 history.ReturnDate = DateTime.Now;
             }
-            
+
             db.SaveChanges();
 
-            return RedirectToAction("RentalHistory", new { id = history.Inventory.Id } );
+            return RedirectToAction("RentalHistory", new { id = history.Inventory.Id });
         }
 
         [HttpGet]
@@ -122,11 +120,12 @@ namespace RazorCars.Web.Controllers
             return PartialView();
         }
 
+        [AllowAnonymous]
         public ActionResult ViewImages(int carTypeId)
         {
             return PartialView();
         }
-        
+
         [HttpPost]
         public ActionResult UploadImage(Image img, HttpPostedFileBase file, int carTypeId)
         {
@@ -144,6 +143,19 @@ namespace RazorCars.Web.Controllers
                 return RedirectToAction("Index");
             }
             return View(img);
-        }        
+        }
+
+        [AllowAnonymous]
+        public ActionResult SearchForm()
+        {
+            return PartialView();
+        }
+
+        [AllowAnonymous]
+        public ActionResult SubmitSearch(string model, string make, string year)
+        {
+            var query = db.CarTypes.Where(x => x.Model == model).ToString();
+            return RedirectToAction("");
+        }
     }
 }
