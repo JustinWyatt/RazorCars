@@ -1,118 +1,38 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using RazorCars.Web.Models;
+using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using System.Web.Http.Description;
-using RazorCars.Web.Models;
 
 namespace RazorCars.Web.Controllers
 {
     public class InventoriesApiController : ApiController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/InventoriesApi
-        public IQueryable<Inventory> GetInventories()
+        string CurrentUserId;
+
+        //[Authorize(Roles = "Admin")]
+        [Route("api/inventoriesapi/index")]
+        public IHttpActionResult Index()
         {
-            return db.Inventories;
-        }
+            if (User.Identity.IsAuthenticated)
+                CurrentUserId = User.Identity.GetUserId();
 
-        // GET: api/InventoriesApi/5
-        [ResponseType(typeof(Inventory))]
-        public IHttpActionResult GetInventory(int id)
-        {
-            Inventory inventory = db.Inventories.Find(id);
-            if (inventory == null)
-            {
-                return NotFound();
-            }
+            var model = db.Users.Find(CurrentUserId).Location.Inventories
+                        .Select(i => new StoreInventoryVM
+                        {
+                            Avaiable = i.Stock - i.Histories.Count(x => x.ReturnDate == null),
+                            InventoryId = i.Id,
+                            Make = i.CarType.Make,
+                            Model = i.CarType.Model,
+                            Year = i.CarType.Year
+                        }).ToList();
 
-            return Ok(inventory);
-        }
-
-        // PUT: api/InventoriesApi/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutInventory(int id, Inventory inventory)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != inventory.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(inventory).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!InventoryExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
-        // POST: api/InventoriesApi
-        [ResponseType(typeof(Inventory))]
-        public IHttpActionResult PostInventory(Inventory inventory)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            db.Inventories.Add(inventory);
-            db.SaveChanges();
-
-            return CreatedAtRoute("DefaultApi", new { id = inventory.Id }, inventory);
-        }
-
-        // DELETE: api/InventoriesApi/5
-        [ResponseType(typeof(Inventory))]
-        public IHttpActionResult DeleteInventory(int id)
-        {
-            Inventory inventory = db.Inventories.Find(id);
-            if (inventory == null)
-            {
-                return NotFound();
-            }
-
-            db.Inventories.Remove(inventory);
-            db.SaveChanges();
-
-            return Ok(inventory);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool InventoryExists(int id)
-        {
-            return db.Inventories.Count(e => e.Id == id) > 0;
+            return Json(model);
         }
     }
 }
