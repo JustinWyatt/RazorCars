@@ -1,37 +1,49 @@
 ﻿@model IEnumerable<RazorCars.Web.Models.CarType>
 
-<div>
+<div >
     @using (Html.BeginForm("Login", "Account", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", role = "form" }))
     {
         @Html.AntiForgeryToken()
         <label>Select Make</label>
         <select class="browser-default">
             <option value="" disabled selected>Make</option>
-            @foreach (var item in Model)
+            @*@foreach (var item in Model)
             {
-                <option value="1 += @item.Make.Count()">@item.Make</option>
+                for (int i = 1; i < item.Make.Count(); i++)
+                {
 
-            }
+                    <option value="@i">@item.Make</option>
+                }
+
+            }*@
         </select>
 
         <label>Select Model</label>
         <select class="browser-default">
             <option value="" disabled selected>Model</option>
-            @foreach (var item in Model)
+            @*@foreach (var item in Model)
             {
-                <option value="1 += @item.Model.Count()">@item.Model</option>
+                for (int i = 1; i < item.Model.Count(); i++)
+                {
 
-            }
+                <option value="@i">@item.Model</option>
+                }
+
+            }*@
         </select>
 
         <label>Select Year</label>
         <select class="browser-default">
             <option value="" disabled selected>Year</option>
-            @foreach (var item in Model)
+            @*@foreach (var item in Model)
             {
-                <option value="1 += @item.Year.Count()">@item.Year</option>
+                for (int i = 1; i < item.Year.ToString().Count(); i++)
+                {
 
-            }
+                    <option value="@i">@item.Year</option>
+                }
+
+            }*@
         </select>
 
         <div class="form-group">
@@ -48,4 +60,15 @@
                 <option value="3">Option 3</option>
             </select>*@
     }
+
+    @* Manufacturer *@
+    @* Size *@
+
+    @* Class *@
+
+    @* Price Range *@
+
+    @* Color *@
+
+
 </div>

@@ -10,79 +10,73 @@
 </head>
 @using Microsoft.AspNet.Identity
 <body>
-    <div class="row">
-        <ul id="dropdown1" class="dropdown-content">
-            <li>@Html.ActionLink("Account Info", "Index", "Manage")</li>
-            <li class="divider"></li>
-        </ul>
-        <ul id="dropdown2" class="dropdown-content">
-            <li>@Html.ActionLink("Inventories", "Index", "Inventories")</li>
-            <li class="divider"></li>
-        </ul>
-        <nav @(Request.IsAuthenticated ? "@class='red lighten-1'" : "@class='red darken-1'") role="navigation">
-            <div class="nav-wrapper container">
-                @Html.ActionLink((Request.IsAuthenticated ? "Razor Administration Portal" : "Razor Cars"), "Home", "Index", htmlAttributes: new { @class = "brand-logo", id = "logo-container" })
-                <ul class="right hide-on-med-and-down">
-                    @if (Request.IsAuthenticated)
-                    {
-                        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    <header>
+        <div>
+            <nav @(Request.IsAuthenticated ? "@class='red accent-4'" : "@class='red accent-4'") role="navigation">
+                <div class="nav-wrapper container ">
+                    @Html.ActionLink((Request.IsAuthenticated ? "Razor Administration Portal" : "Razor Cars"), "Home", "Index", htmlAttributes: new { @class = "brand-logo", id = "logo-container" })
+                    <ul class="right hide-on-med-and-down">
+                        @if (Request.IsAuthenticated)
                         {
-                            @Html.AntiForgeryToken()
-                            <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
-                            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-                            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Account<i class="material-icons right">arrow_drop_down</i></a></li>
-                            <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Administration<i class="material-icons right">arrow_drop_down</i></a></li>
+                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Account<i class="material-icons right"></i></a></li>
+                                <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Administration<i class="material-icons right"></i></a></li>
+                            }
                         }
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                        <li>@Html.ActionLink("Registration", "Register", "Account")</li>
-                    }
-                </ul>
-            </div>
-        </nav>
-    </div>
+                        else
+                        {
+                            <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                            <li>@Html.ActionLink("Registration", "Register", "Account")</li>
+                        }
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
 
-    @Html.Partial("_SideNavPartial")
 
     <!-- Teal page content  --> <!-- Accordance with materializecss.com/grid.html-->
-    <div class="col s12 m8 l9">
-        <div class="container body-content">
-            @RenderBody()
-            <hr />
-            @if (!Request.IsAuthenticated)
-            {
-                @*<footer>
+    <main>
+        <div class="col s12 m8 l9">
+            <div class="container body-content">
+                @RenderBody()
+                <hr />
+            </div>
+        </div>
+    </main>
+            @*<footer>
                     <p>&copy; @DateTime.Now.Year - Razor Cars</p>
                 </footer>*@
-                <footer class="page-footer">
+            <footer class="page-footer #d50000 red accent-4">
+                <div class="container">
+                    <div class="row">
+                        <div class="col l6 s12">
+                            <h5 class="white-text">Footer Content</h5>
+                            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+                        </div>
+                        <div class="col l4 offset-l2 s12">
+                            <h5 class="white-text">Links</h5>
+                            <ul>
+                                <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                                <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright">
                     <div class="container">
-                        <div class="row">
-                            <div class="col l6 s12">
-                                <h5 class="white-text">Footer Content</h5>
-                                <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-                            </div>
-                            <div class="col l4 offset-l2 s12">
-                                <h5 class="white-text">Links</h5>
-                                <ul>
-                                    <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                                    <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                                </ul>
-                            </div>
-                        </div>
+                        <p>&copy; @DateTime.Now.Year - Razor Cars</p>
                     </div>
-                    <div class="footer-copyright">
-                        <div class="container">
-                            <p>&copy; @DateTime.Now.Year - Razor Cars</p>
-                        </div>
-                    </div>
-                </footer>
-            }
-        </div>
-    </div>
+                </div>
+            </footer>
+
+        
 
 
     @Scripts.Render("~/bundles/jquery")
@@ -90,8 +84,6 @@
     @RenderSection("scripts", required: false)
 
     <script>
-        // Initialize collapse button
-        $(".button-collapse").sideNav();
         // Initialize collapsible
         $('.collapsible').collapsible();
 

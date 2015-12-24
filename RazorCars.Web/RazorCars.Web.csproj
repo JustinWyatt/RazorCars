@@ -262,6 +262,10 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Properties\PublishProfiles\RazorCars.pubxml" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\angular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -331,7 +335,7 @@
     <Content Include="Views\Shared\RentalHistoryDetail.cshtml" />
     <Content Include="Views\Shared\_SideNavPartial.cshtml" />
     <Content Include="Views\Inventories\UploadImage.cshtml" />
-    <Content Include="Views\Inventories\SearchForm.cshtml" />
+    <Content Include="Views\Shared\SearchForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

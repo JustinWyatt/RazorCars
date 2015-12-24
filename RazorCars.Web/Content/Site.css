@@ -1,25 +1,25 @@
-﻿    .card-list {
+﻿.card-list {
+    display: flex;
+    width: 100%;
+}
+
+.card-list__item {
+    width: 100%;
+    justify-content: center;
+    flex: 1;
+}
+
+.make-this-flex{
         display: flex;
-        width: 100%;
-
     }
 
-    .card-list__item{
-        width: 100%;
+.row-card {
+    width: 100%;
+}
 
-        justify-content: center;
-    }
 
-    .row-card{
-        width: 100%;
-    }
 
-    .card-list__item {
-        flex: 1;
-        
-    }
-
-    .rental-history{
-        margin-top: 50px;
-        margin-right : 20px;
-    }
+.rental-history {
+    margin-top: 50px;
+    margin-right: 20px;
+}

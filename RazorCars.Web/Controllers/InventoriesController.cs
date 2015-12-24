@@ -148,14 +148,13 @@ namespace RazorCars.Web.Controllers
         [AllowAnonymous]
         public ActionResult SearchForm()
         {
-            return PartialView(db.CarTypes.ToList());
+            return PartialView();
         }
 
         [AllowAnonymous]
         [HttpPost]
         public ActionResult SubmitSearch(string model, string make, string year)
         {
-            var query = db.CarTypes.Where(x => x.Model == model).ToString();
             return RedirectToAction("SearchResults", "Inventories");
         }
 

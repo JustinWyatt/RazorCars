@@ -14,7 +14,7 @@
 </style>
 
 <div class="parrallax parallax-container">
-    <div class="parallax"><img src="https://i.ytimg.com/vi/x88swir-yGU/maxresdefault.jpg"></div>
+    <div class="parallax"><img src=""/></div>
     <h1 class="white-text text-lighten-5">Toy Cars For Rent </h1>
     <h5 clas="white lighten-4 grey-text text-darken-1">The best in toy cars.</h5>
 </div>
@@ -33,17 +33,27 @@
 
 
 @* flex box, color: white *@
+<style>
+    .pic {
+        width: 600px;
+        height: 500px;
+    }
 
-<div>
+    .search-box {
+        width: 600px;
+        height: 500px;
+    }
+</style>
+<div class="make-this-flex">
     <ul>
-        <li>
-            <div>
+        <li class="card-list__item">
+            <div class="search-box">
                 <h2>Choose your car</h2>
-                @Html.Partial("SearchForm", "Inventories")
+                @Html.Partial("SearchForm")
             </div>
         </li>
 
-        <li>
+        <li class="card-list__item">
             <div>
                 <h2>Find a great deal</h2>
                 <img />
