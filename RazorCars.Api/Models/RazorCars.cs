@@ -8,7 +8,8 @@ namespace RazorCars.Api.Models
     public partial class RazorCars : DbContext
     {
         public RazorCars()
-            : base("name=RazorCars")
+            //: base("name=RazorCars")
+            : base("data source = (LocalDb)\\MSSQLLocalDB; initial catalog = aspnet - RazorCars.Web - 20151221110632; integrated security = True; MultipleActiveResultSets=True;App=EntityFramework")
         {
         }
 

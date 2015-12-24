@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorCars.Web", "RazorCars.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorCars.Tests", "RazorCars.Tests\RazorCars.Tests.csproj", "{EAD0ACC4-BB03-4A09-8821-7C9E92EBE3A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorCars.Api", "RazorCars.Api\RazorCars.Api.csproj", "{C2FCF41A-BE61-48CE-981E-E9521D0C0A38}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{EAD0ACC4-BB03-4A09-8821-7C9E92EBE3A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAD0ACC4-BB03-4A09-8821-7C9E92EBE3A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAD0ACC4-BB03-4A09-8821-7C9E92EBE3A4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2FCF41A-BE61-48CE-981E-E9521D0C0A38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2FCF41A-BE61-48CE-981E-E9521D0C0A38}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2FCF41A-BE61-48CE-981E-E9521D0C0A38}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2FCF41A-BE61-48CE-981E-E9521D0C0A38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
