@@ -1,0 +1,51 @@
+﻿@model IEnumerable<RazorCars.Web.Models.CarType>
+
+<div>
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <label>Select Make</label>
+        <select class="browser-default">
+            <option value="" disabled selected>Make</option>
+            @foreach (var item in Model)
+            {
+                <option value="1 += @item.Make.Count()">@item.Make</option>
+
+            }
+        </select>
+
+        <label>Select Model</label>
+        <select class="browser-default">
+            <option value="" disabled selected>Model</option>
+            @foreach (var item in Model)
+            {
+                <option value="1 += @item.Model.Count()">@item.Model</option>
+
+            }
+        </select>
+
+        <label>Select Year</label>
+        <select class="browser-default">
+            <option value="" disabled selected>Year</option>
+            @foreach (var item in Model)
+            {
+                <option value="1 += @item.Year.Count()">@item.Year</option>
+
+            }
+        </select>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Search" class="btn btn-default" />
+            </div>
+        </div>
+
+        @*<label>Choose Color</label>
+            <select class="browser-default">
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+            </select>*@
+    }
+</div>

@@ -19,13 +19,40 @@
     <h5 clas="white lighten-4 grey-text text-darken-1">The best in toy cars.</h5>
 </div>
 
+
+@* flex box, color: grey *@
 <div>
-    <h3>Find a great deal.</h3>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+
+    </ul>
 </div>
 
+
+@* flex box, color: white *@
+
 <div>
-    @* search cars *@
+    <ul>
+        <li>
+            <div>
+                <h2>Choose your car</h2>
+                @Html.Partial("SearchForm", "Inventories")
+            </div>
+        </li>
+
+        <li>
+            <div>
+                <h2>Find a great deal</h2>
+                <img />
+            </div>
+        </li>
+    </ul>
 </div>
+
+@* footer color dark red *@
 
 <script>
     $(document).ready(function () {

@@ -140,22 +140,30 @@ namespace RazorCars.Web.Controllers
                 }
                 car.Images.Add(img);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Content(img.ToString());
             }
-            return View(img);
+            return RedirectToAction("UploadImage", "Inventories");           
         }
 
         [AllowAnonymous]
         public ActionResult SearchForm()
         {
-            return PartialView();
+            return PartialView(db.CarTypes.ToList());
         }
 
         [AllowAnonymous]
+        [HttpPost]
         public ActionResult SubmitSearch(string model, string make, string year)
         {
             var query = db.CarTypes.Where(x => x.Model == model).ToString();
-            return RedirectToAction("");
+            return RedirectToAction("SearchResults", "Inventories");
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult SearchResults(string searchQuery)
+        {
+            return View();
         }
     }
 }

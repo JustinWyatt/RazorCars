@@ -237,6 +237,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RentalHistory.cs" />
     <Compile Include="Models\RentalHistoryVM.cs" />
+    <Compile Include="Models\SearchVM.cs" />
     <Compile Include="Models\StoreInventoryVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -330,6 +331,7 @@
     <Content Include="Views\Shared\RentalHistoryDetail.cshtml" />
     <Content Include="Views\Shared\_SideNavPartial.cshtml" />
     <Content Include="Views\Inventories\UploadImage.cshtml" />
+    <Content Include="Views\Inventories\SearchForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
