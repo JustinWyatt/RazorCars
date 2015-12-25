@@ -1,18 +1,65 @@
 ﻿<!DOCTYPE html>
-<html ng-app="RazorPortal" xmlns="http://www.w3.org/1999/xhtml">
+<html ng-app="app" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <script src="Scripts/jquery-1.7.1.js"></script>
-    <script src="Scripts/angular.js"></script>
+    <script src="Scripts/jquery-2.1.4.js"></script>
     <script src="Scripts/bootstrap.js"></script>
-
-    <script src="Scripts/angular-resource.js"></script>
-    <script src="Scripts/razorportal.js"></script>
-    <link rel="stylesheet" type="text/css" href="Content/bootstrap.css" />
+    <script src="Scripts/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.0/angular-resource.min.js"></script>
+    <script src="Scripts/app.js"></script>    
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="Content/razorportal.css"/>
     <title>Razor Portal</title>
 </head>
 <body>
-    <div class="container">
-        <div ng-view></div>
+    <div id="wrapper">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Razor Administration Portal
+                    </a>
+                </li>
+                <li>
+                    <a href="#">Dashboard</a>
+                </li>
+                <li>
+                    <a href="#">Inventories</a>
+                </li>
+                <li>
+                    <a href="#">Cars</a>
+                </li>
+                <li>
+                    <a href="#">User Accounts</a>
+                </li>                
+                <li>
+                    <a href="#">Account Info</a>
+                </li>
+                <li>
+                    <a href="#">Messages</a>
+                </li>
+                <li>
+                    <a href="#">Log Off</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- ng-view-->
+                        <div ng-view></div>    
+                        <!-- ng-view-->                                            
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+        
     </div>
+    
 </body>
 </html>

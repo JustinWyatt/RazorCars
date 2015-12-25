@@ -6,15 +6,53 @@
     <title>@ViewBag.Title - Razor Car</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.css" />
 </head>
 @using Microsoft.AspNet.Identity
 <body>
     <header>
-        <div>
-            <nav @(Request.IsAuthenticated ? "@class='red accent-4'" : "@class='red accent-4'") role="navigation">
+        
+        <div class="navbar topGreyNav">             
+            <nav class="white lighten-1 topNav">
+                <div class="nav-wrapper">
+                    <div class="col s12 topNavInner left">
+                        <ul class="hide-on-med-and-down  phonenumber left">
+                            <li class="callnum"><a href="tel:+1 844 739 8326"> <i class="left small mdi-communication-call iconpoint"></i>+1 844 739 8326</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col s12 topNavInner top-right-nav right">
+                        <ul class="phonenumber">
+                            @*<li class="deviderright hide-on-small-only waves-effect waves-light"><a rel="nofollow" href="http://rdxsports.com/trade-inquiries/"><i class="left small mdi-social-group iconpoint"></i>Trade Inquiry</a></li>*@
+                            <li class="deviderright hide-on-small-only waves-effect waves-light ">@*<a href="http://rdxsports.com/contact-us" data-elevio-module="articles" class="borderb0">*@<i class="left small mdi-action-help iconpoint"></i>About Us</a></li>
+                            <li class="deviderright waves-effect waves-light"><a rel="nofollow" href="javascript:;" class="login-btn notlogin"><i class="left small mdi-action-lock iconpoint"></i>Login</a></li>
+                            @*<li class="deviderright hide-on-small-only waves-effect waves-light"><!--a href="http://rdxsports.com/change-country/?country=resetall"--><a href="javascript:;" onclick="changelangnew()" id="changelangnew">USD $ </a></li>*@
+                            @if (Request.IsAuthenticated)
+                            {
+                                <li class="deviderright waves-effect waves-light">@User.Identity.GetUserName()</li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="slider">
+            <ul class="slides">
+                <li>
+                    <img src="https://i.ytimg.com/vi/x88swir-yGU/maxresdefault.jpg"> <!-- random image -->
+                    <div class="caption center-align">
+                        <h3>Toy Cars For Rent</h3>
+                        @*<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>*@
+                    </div>
+                </li>                
+            </ul>
+        </div>
+
+        @*<div>
+            <nav class='red accent-4' role="navigation">
                 <div class="nav-wrapper container ">
-                    @Html.ActionLink((Request.IsAuthenticated ? "Razor Administration Portal" : "Razor Cars"), "Home", "Index", htmlAttributes: new { @class = "brand-logo", id = "logo-container" })
+                    @Html.ActionLink("Razor Cars", "Home", "Index", htmlAttributes: new { @class = "brand-logo", id = "logo-container" })
                     <ul class="right hide-on-med-and-down">
                         @if (Request.IsAuthenticated)
                         {
@@ -35,11 +73,8 @@
                     </ul>
                 </div>
             </nav>
-        </div>
+        </div>*@        
     </header>
-
-
-    <!-- Teal page content  --> <!-- Accordance with materializecss.com/grid.html-->
     <main>
         <div class="col s12 m8 l9">
             <div class="container body-content">
@@ -48,35 +83,31 @@
             </div>
         </div>
     </main>
-            @*<footer>
-                    <p>&copy; @DateTime.Now.Year - Razor Cars</p>
-                </footer>*@
-            <footer class="page-footer #d50000 red accent-4">
-                <div class="container">
-                    <div class="row">
-                        <div class="col l6 s12">
-                            <h5 class="white-text">Footer Content</h5>
-                            <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-                        </div>
-                        <div class="col l4 offset-l2 s12">
-                            <h5 class="white-text">Links</h5>
-                            <ul>
-                                <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                                <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                            </ul>
-                        </div>
-                    </div>
+    
+    <footer class="page-footer #d50000 red accent-4">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Footer Content</h5>
+                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
                 </div>
-                <div class="footer-copyright">
-                    <div class="container">
-                        <p>&copy; @DateTime.Now.Year - Razor Cars</p>
-                    </div>
+                <div class="col l4 offset-l2 s12">
+                    <h5 class="white-text">Links</h5>
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                    </ul>
                 </div>
-            </footer>
-
-        
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <div class="container">
+                <p>&copy; @DateTime.Now.Year - Razor Cars</p>
+            </div>
+        </div>
+    </footer>
 
 
     @Scripts.Render("~/bundles/jquery")

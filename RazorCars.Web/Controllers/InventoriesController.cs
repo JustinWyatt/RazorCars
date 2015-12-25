@@ -15,7 +15,7 @@ namespace RazorCars.Web.Controllers
         string CurrentUserId;
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
-        {
+            {
             if (User.Identity.IsAuthenticated)
                 CurrentUserId = User.Identity.GetUserId();
 
