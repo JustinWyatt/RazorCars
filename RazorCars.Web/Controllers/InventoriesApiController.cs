@@ -24,7 +24,7 @@ namespace RazorCars.Web.Controllers
             var model = db.Users.Find(CurrentUserId).Location.Inventories
                     .Select(i => new StoreInventoryVM
                     {
-                        Avaiable = i.Stock - i.Histories.Count(x => x.ReturnDate == null),
+                        Available = i.Stock - i.Histories.Count(x => x.ReturnDate == null),
                         InventoryId = i.Id,
                         Make = i.CarType.Make,
                         Model = i.CarType.Model,

@@ -11,15 +11,14 @@
 @using Microsoft.AspNet.Identity
 <body>
     <header>
-        
-        <div class="navbar topGreyNav">             
+        <div class="navbar topGreyNav">
             <nav class="white lighten-1 topNav">
                 <div class="nav-wrapper">
-                    <div class="col s12 topNavInner left">
+                    @*<div class="col s12 topNavInner left">
                         <ul class="hide-on-med-and-down  phonenumber left">
                             <li class="callnum"><a href="tel:+1 844 739 8326"> <i class="left small mdi-communication-call iconpoint"></i>+1 844 739 8326</a></li>
                         </ul>
-                    </div>
+                    </div>*@
 
                     <div class="col s12 topNavInner top-right-nav right">
                         <ul class="phonenumber">
@@ -37,43 +36,89 @@
             </nav>
         </div>
 
+        <!-- Top login drop down box -->
+        <div class="nav-wrapper login-box white-text" style="display:none;">
+            <div class="row">
+
+                <!-- login box inner first -->
+                <div class="col s12 m12 l4 center hide-on-med-and-down">
+                    <h4>Don't have Account..?</h4>
+                    <div class="sign-up-btn">
+                        @*<a class="waves-effect grey darken-4 waves-light btn" href="https://rdxsports.com/customer/account/login/">Create Account</a>*@
+                        @Html.ActionLink("Create Account", "Register", "Account", htmlAttributes: new { @class = "waves-effect grey darken-4 waves-light btn" })
+                    </div>
+                </div>
+
+
+                <!-- login box inner third -->
+                <div class="col s12 m12 l4 center">
+                    <h4>Already Registered..?</h4>
+                    <div class="login-form">
+                        @Html.Partial("_LoginPartial")
+                        @*<form action="https://rdxsports.com/customer/account/loginPost/" method="post" id="login-form">
+                                <input name="form_key" type="hidden" value="c73fcHzhGNWlgg8Y" />
+                                <!-- Email for login -->
+                                <div class="input-field form-mini-login col s12">
+                                    <i class="mdi-communication-email prefix"></i>
+                                    <input autocomplete="off" type="text" name="login[username]" value="" id="email" class="mini-form-text-input grey-text text-darken-4 validate input-text required-entry validate-email" title="Email Address" />
+                                    <label for="email">Email Address</label>
+                                </div>
+                                <!-- Password for login -->
+                                <div class="input-field form-mini-login col s12">
+                                    <i class="mdi-communication-vpn-key prefix"></i>
+                                    <input autocomplete="off" type="password" name="login[password]" class="password-field-pl input-text required-entry validate-password mini-form-text-input grey-text text-darken-4" id="pass" title="Password" />
+                                    <label for="pass">Password</label>
+                                </div>
+                                <div class="buttons-set right">
+                                    <a href="https://rdxsports.com/customer/account/forgotpassword/?easy_ajax=1" class="f-left white-text">Forgot Your Password?</a>
+                                    <button type="submit" class="waves-effect waves-light btn red accent-4" title="Login" name="send" id="send2"><span><span>Login</span></span></button>
+                                </div>
+                            </form>*@
+                    </div>
+                </div>
+
+                <div class="divider hide-on-large-only"></div>
+
+                <!-- login box inner first -->
+                <div class="col s12 m12 l4 center hide-on-large-only">
+                    <h4>Don't have Account..?</h4>
+                    <div class="sign-up-btn">
+                        @*<a class="waves-effect grey darken-4 waves-light btn" href="https://rdxsports.com/customer/account/login/">Create Account</a>*@
+                        @Html.ActionLink("Create Account", "Register", "Account", htmlAttributes: new { @class = "waves-effect grey darken-4 waves-light btn" })
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
         <div class="slider">
             <ul class="slides">
                 <li>
                     <img src="https://i.ytimg.com/vi/x88swir-yGU/maxresdefault.jpg"> <!-- random image -->
                     <div class="caption center-align">
-                        <h3>Toy Cars For Rent</h3>
+                        <h1>Toy Cars For Rent</h1>
                         @*<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>*@
                     </div>
-                </li>                
+                </li>
             </ul>
         </div>
 
-        @*<div>
-            <nav class='red accent-4' role="navigation">
-                <div class="nav-wrapper container ">
-                    @Html.ActionLink("Razor Cars", "Home", "Index", htmlAttributes: new { @class = "brand-logo", id = "logo-container" })
-                    <ul class="right hide-on-med-and-down">
-                        @if (Request.IsAuthenticated)
-                        {
-                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
-                            {
-                                @Html.AntiForgeryToken()
-                                <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
-                                <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-                                <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Account<i class="material-icons right"></i></a></li>
-                                <li><a class="dropdown-button" href="#!" data-activates="dropdown2">Administration<i class="material-icons right"></i></a></li>
-                            }
-                        }
-                        else
-                        {
-                            <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                            <li>@Html.ActionLink("Registration", "Register", "Account")</li>
-                        }
-                    </ul>
-                </div>
-            </nav>
-        </div>*@        
+        @*<div class= "navbar-fixed">
+                <nav class='red accent-4' role="navigation">
+                    <div class="nav-wrapper container ">
+                        @Html.ActionLink("Razor Cars", "Home", "Index", htmlAttributes: new { @class = "brand-logo", id = "logo-container" })
+                        <ul class="right hide-on-med-and-down">
+                            <li>Car Collection</li>
+                            <li>Rentals</li>
+                            <li>Rentals</li>
+                                <li>Rentals</li>
+                                <li>Rentals</li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </div>*@
     </header>
     <main>
         <div class="col s12 m8 l9">
@@ -83,7 +128,7 @@
             </div>
         </div>
     </main>
-    
+
     <footer class="page-footer #d50000 red accent-4">
         <div class="container">
             <div class="row">

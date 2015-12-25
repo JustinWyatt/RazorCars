@@ -11,7 +11,7 @@ namespace RazorCars.Web.Models
         public int Year { get; set; }
         public string Make { get; set; }
         public string Model { get; set; }
-        public int Avaiable { get; set; }
+        public int Available { get; set; }
 
     }
 }
