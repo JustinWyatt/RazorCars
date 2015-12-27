@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using RazorCars.Web.Models;
+using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace RazorCars.Web.Controllers
         string CurrentUserId;
 
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
-            {
+        {
             if (User.Identity.IsAuthenticated)
                 CurrentUserId = User.Identity.GetUserId();
 
@@ -28,7 +29,7 @@ namespace RazorCars.Web.Controllers
             var model = db.Users.Find(CurrentUserId).Location.Inventories
                         .Select(i => new StoreInventoryVM
                         {
-                            Avaiable = i.Stock - i.Histories.Count(x => x.ReturnDate == null),
+                            Available = i.Stock - i.Histories.Count(x => x.ReturnDate == null),
                             InventoryId = i.Id,
                             Make = i.CarType.Make,
                             Model = i.CarType.Model,
@@ -60,7 +61,7 @@ namespace RazorCars.Web.Controllers
                 }).ToList()
 
             };
-            
+
             return View(model);
         }
 
@@ -142,27 +143,45 @@ namespace RazorCars.Web.Controllers
                 db.SaveChanges();
                 return Content(img.ToString());
             }
-            return RedirectToAction("UploadImage", "Inventories");           
+            return RedirectToAction("UploadImage", "Inventories");
         }
 
-        [AllowAnonymous]
-        public ActionResult SearchForm()
+        
+        [HttpGet]
+        public ActionResult ReservationForm()
         {
             return PartialView();
         }
 
-        [AllowAnonymous]
         [HttpPost]
-        public ActionResult SubmitSearch(string model, string make, string year)
+        public ActionResult MakeReservation(Reservation reservation)
         {
-            return RedirectToAction("SearchResults", "Inventories");
-        }
+            RestClient restClient = new RestClient("url");
 
-        [AllowAnonymous]
-        [HttpGet]
-        public ActionResult SearchResults(string searchQuery)
-        {
-            return View();
+            //Create request with GET
+            var request = new RestRequest("api/serverdata", Method.GET);
+
+            var newReservation = new Reservation();
+            newReservation.PickUp = reservation.PickUp;
+            newReservation.Return = reservation.Return;
+            newReservation.Age = reservation.Age;
+            newReservation.Location = new ReservationLocation()
+            {
+                Address = "foo",
+                State = "foo",
+                City = "foo",
+                Postal = "foo",
+                PhoneNumber = 1,
+                ContactPerson = "foo"
+            };
+            newReservation.Confirmation = new Guid(0xA, 0xB, 0xC, new Byte[] { 0, 1, 2, 3, 4, 5, 6, 7 });
+            db.Users.Find(User.Identity.GetUserId());
+            db.SaveChanges();
+            if (ModelState.IsValid)
+            {
+                return Json(newReservation.Confirmation);
+            }
+            return RedirectToAction("ReservationDetails", "Inventories");
         }
     }
 }

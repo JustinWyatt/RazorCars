@@ -6,21 +6,179 @@
     <script src="Scripts/angular.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.0/angular-resource.min.js"></script>
-    <script src="Scripts/app.js"></script>    
+    <script src="Scripts/app.js"></script>
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="Content/razorportal.css"/>
+    <link rel="stylesheet" type="text/css" href="Content/razorportal.css" />
     <title>Razor Portal</title>
 </head>
 <body>
     <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">SB Admin</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu message-dropdown">
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading">
+                                            <strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-footer">
+                            <a href="#">Read All New Messages</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu alert-dropdown">
+                        <li>
+                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">View All</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+         <!--Sidebar Menu Items - These collapse to the responsive navigation menu on small screens 
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav side-nav">
+                <li class="active">
+                    <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Inventories</a>
+                </li>
+                <li>
+                    <a href="tables.html"><i class="fa fa-fw fa-table"></i> Cars</a>
+                </li>
+                <li>
+                    <a href="forms.html"><i class="fa fa-fw fa-edit"></i> User Accounts</a>
+                </li>
+                <li>
+                    <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Messages</a>
+                </li>
+                <li>
+                    <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Log Off</a>
+                </li>
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="demo" class="collapse">
+                        <li>
+                            <a href="#">Dropdown Item</a>
+                        </li>
+                        <li>
+                            <a href="#">Dropdown Item</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                </li>
+                <li>
+                    <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                </li>
+            </ul>
+        </div>-->
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                <li class="sidebar-brand">
+                <!--<li class="sidebar-brand">
                     <a href="#">
                         Razor Administration Portal
                     </a>
-                </li>
+                </li>-->
                 <li>
                     <a href="#">Dashboard</a>
                 </li>
@@ -28,16 +186,33 @@
                     <a href="#">Inventories</a>
                 </li>
                 <li>
+                    <a href="#">Reciepts, Invoices, Economy</a>
+                </li>
+                <li>
                     <a href="#">Cars</a>
                 </li>
                 <li>
                     <a href="#">User Accounts</a>
-                </li>                
+                </li>
                 <li>
                     <a href="#">Account Info</a>
                 </li>
                 <li>
-                    <a href="#">Messages</a>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-file-text-o"></i> Message Board <i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="demo" class="collapse">
+                        <li>
+                            <a href="#">Administration Channel</a>
+                        </li>
+                        <li>
+                            <a href="#">Human Resources Channel</a>
+                        </li>
+                        <li>
+                            <a href="#">Developer Channel</a>
+                        </li>
+                        <li>
+                            <a href="#">Sales Channel</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <a href="#">Log Off</a>
@@ -51,15 +226,15 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <!-- ng-view-->
-                        <div ng-view></div>    
-                        <!-- ng-view-->                                            
+                        <div ng-view></div>
+                        <!-- ng-view-->
                     </div>
                 </div>
             </div>
         </div>
         <!-- /#page-content-wrapper -->
-        
+
     </div>
-    
+
 </body>
 </html>

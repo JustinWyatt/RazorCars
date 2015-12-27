@@ -1,0 +1,58 @@
+﻿@model RazorCars.Web.Models.Reservation
+
+@using (Html.BeginForm("MakeReservation", "Inventories", FormMethod.Post))
+{
+    <ul>
+        <li>
+            @Html.AntiForgeryToken()
+            <hr />
+            <fieldset>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Location)
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Location)
+                    </div>
+                </div>
+            </fieldset>
+        </li>
+        <li>
+            <fieldset>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.PickUp)
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.PickUp)
+                    </div>
+                </div>
+            </fieldset>
+        </li>
+
+        <li>
+            <fieldset>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Return)
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Return)
+                    </div>
+                </div>
+            </fieldset>
+        </li>
+
+        <li>
+            <fieldset>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Age)
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(m => m.Age)
+                    </div>
+                </div>
+            </fieldset>
+        </li>
+
+        <li>
+            <div>
+                @Html.ActionLink("Continue", "CompleteReservation")
+            </div>
+        </li>
+    </ul>
+}
+

@@ -8,33 +8,45 @@
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.css" />
 </head>
+
 @using Microsoft.AspNet.Identity
 <body>
     <header>
-        <div class="navbar topGreyNav">
-            <nav class="white lighten-1 topNav">
-                <div class="nav-wrapper">
-                    @*<div class="col s12 topNavInner left">
+        @*<nav class="#424242 grey darken-3 top-nav">
+                <ul>
+                    @Html.Partial("_LoginPartial")
+                </ul>
+            </nav>*@
+        <nav class="white top-nav">
+            <div class="nav-wrapper">
+                @*<div class="col s12 topNavInner left">
                         <ul class="hide-on-med-and-down  phonenumber left">
                             <li class="callnum"><a href="tel:+1 844 739 8326"> <i class="left small mdi-communication-call iconpoint"></i>+1 844 739 8326</a></li>
                         </ul>
                     </div>*@
 
-                    <div class="col s12 topNavInner top-right-nav right">
-                        <ul class="phonenumber">
-                            @*<li class="deviderright hide-on-small-only waves-effect waves-light"><a rel="nofollow" href="http://rdxsports.com/trade-inquiries/"><i class="left small mdi-social-group iconpoint"></i>Trade Inquiry</a></li>*@
-                            <li class="deviderright hide-on-small-only waves-effect waves-light ">@*<a href="http://rdxsports.com/contact-us" data-elevio-module="articles" class="borderb0">*@<i class="left small mdi-action-help iconpoint"></i>About Us</a></li>
-                            <li class="deviderright waves-effect waves-light"><a rel="nofollow" href="javascript:;" class="login-btn notlogin"><i class="left small mdi-action-lock iconpoint"></i>Login</a></li>
-                            @*<li class="deviderright hide-on-small-only waves-effect waves-light"><!--a href="http://rdxsports.com/change-country/?country=resetall"--><a href="javascript:;" onclick="changelangnew()" id="changelangnew">USD $ </a></li>*@
-                            @if (Request.IsAuthenticated)
+                <a href="#" class="brand-logo"><img class="image-logo" src="http://s18.postimg.org/7yjt4kajd/Razor_Cars_Logo.jpg" /></a>
+
+                <div class="col s12 topNavInner top-right-nav right">
+                    <ul class="image-logo">
+                        @*<li class="deviderright hide-on-small-only waves-effect waves-light"><a rel="nofollow" href="http://rdxsports.com/trade-inquiries/"><i class="left small mdi-social-group iconpoint"></i>Trade Inquiry</a></li>*@
+                        @*<li class="deviderright waves-effect waves-light grey btn"><a rel="nofollow" href="javascript:;" class="login-btn notlogin "><i class="left small mdi-action-lock iconpoint"></i>Login</a></li>*@
+                        @*<li class="deviderright waves-effect waves-light red btn"><a rel="nofollow" href="javascript:;" class="login-btn notlogin"><i class="left small mdi-action-lock iconpoint"></i>Sign Up</a>></li>*@
+                        <li><a>Rent</a></li>
+                        <li><a>Buy</a></li>
+                        <li><a>Location</a></li>
+                        <li><a>Business Rentals</a></li>
+                        <li><a>Customer Support</a></li>
+                        <li><a>About</a></li>
+
+                        @*@if (Request.IsAuthenticated)
                             {
                                 <li class="deviderright waves-effect waves-light">@User.Identity.GetUserName()</li>
-                            }
-                        </ul>
-                    </div>
+                            }*@
+                    </ul>
                 </div>
-            </nav>
-        </div>
+            </div>
+        </nav>
 
         <!-- Top login drop down box -->
         <div class="nav-wrapper login-box white-text" style="display:none;">
@@ -44,36 +56,36 @@
                 <div class="col s12 m12 l4 center hide-on-med-and-down">
                     <h4>Don't have Account..?</h4>
                     <div class="sign-up-btn">
-                        @*<a class="waves-effect grey darken-4 waves-light btn" href="https://rdxsports.com/customer/account/login/">Create Account</a>*@
-                        @Html.ActionLink("Create Account", "Register", "Account", htmlAttributes: new { @class = "waves-effect grey darken-4 waves-light btn" })
-                    </div>
-                </div>
+                        @*<a class="waves-effect grey darken-4 waves-light btn" href="https://rdxsports.com/customer/account/login/">Create Account</a>
+                                    @Html.ActionLink("Create Account", "Register", "Account", htmlAttributes: new { @class = "waves-effect grey darken-4 waves-light btn" })
+                                </div>
+                            </div>
 
 
-                <!-- login box inner third -->
-                <div class="col s12 m12 l4 center">
-                    <h4>Already Registered..?</h4>
-                    <div class="login-form">
-                        @Html.Partial("_LoginPartial")
-                        @*<form action="https://rdxsports.com/customer/account/loginPost/" method="post" id="login-form">
-                                <input name="form_key" type="hidden" value="c73fcHzhGNWlgg8Y" />
-                                <!-- Email for login -->
-                                <div class="input-field form-mini-login col s12">
-                                    <i class="mdi-communication-email prefix"></i>
-                                    <input autocomplete="off" type="text" name="login[username]" value="" id="email" class="mini-form-text-input grey-text text-darken-4 validate input-text required-entry validate-email" title="Email Address" />
-                                    <label for="email">Email Address</label>
-                                </div>
-                                <!-- Password for login -->
-                                <div class="input-field form-mini-login col s12">
-                                    <i class="mdi-communication-vpn-key prefix"></i>
-                                    <input autocomplete="off" type="password" name="login[password]" class="password-field-pl input-text required-entry validate-password mini-form-text-input grey-text text-darken-4" id="pass" title="Password" />
-                                    <label for="pass">Password</label>
-                                </div>
-                                <div class="buttons-set right">
-                                    <a href="https://rdxsports.com/customer/account/forgotpassword/?easy_ajax=1" class="f-left white-text">Forgot Your Password?</a>
-                                    <button type="submit" class="waves-effect waves-light btn red accent-4" title="Login" name="send" id="send2"><span><span>Login</span></span></button>
-                                </div>
-                            </form>*@
+                            <!-- login box inner third -->
+                            <div class="col s12 m12 l4 center">
+                                <h4>Already Registered..?</h4>
+                                <div class="login-form">
+                                    @Html.Partial("_LoginPartial")
+                                    @*<form action="https://rdxsports.com/customer/account/loginPost/" method="post" id="login-form">
+                                            <input name="form_key" type="hidden" value="c73fcHzhGNWlgg8Y" />
+                                            <!-- Email for login -->
+                                            <div class="input-field form-mini-login col s12">
+                                                <i class="mdi-communication-email prefix"></i>
+                                                <input autocomplete="off" type="text" name="login[username]" value="" id="email" class="mini-form-text-input grey-text text-darken-4 validate input-text required-entry validate-email" title="Email Address" />
+                                                <label for="email">Email Address</label>
+                                            </div>
+                                            <!-- Password for login -->
+                                            <div class="input-field form-mini-login col s12">
+                                                <i class="mdi-communication-vpn-key prefix"></i>
+                                                <input autocomplete="off" type="password" name="login[password]" class="password-field-pl input-text required-entry validate-password mini-form-text-input grey-text text-darken-4" id="pass" title="Password" />
+                                                <label for="pass">Password</label>
+                                            </div>
+                                            <div class="buttons-set right">
+                                                <a href="https://rdxsports.com/customer/account/forgotpassword/?easy_ajax=1" class="f-left white-text">Forgot Your Password?</a>
+                                                <button type="submit" class="waves-effect waves-light btn red accent-4" title="Login" name="send" id="send2"><span><span>Login</span></span></button>
+                                            </div>
+                                        </form>*@
                     </div>
                 </div>
 
@@ -92,33 +104,45 @@
             </div>
         </div>
 
+
         <div class="slider">
             <ul class="slides">
                 <li>
-                    <img src="https://i.ytimg.com/vi/x88swir-yGU/maxresdefault.jpg"> <!-- random image -->
+                    <img src="http://s16.postimg.org/puoo2hiol/Holding_car.png" /> <!-- random image -->
                     <div class="caption center-align">
                         <h1>Toy Cars For Rent</h1>
                         @*<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>*@
+                        <div>
+                            @Html.Partial("_ReservationFormPartial")
+                        </div>
                     </div>
                 </li>
             </ul>
+
         </div>
 
-        @*<div class= "navbar-fixed">
-                <nav class='red accent-4' role="navigation">
-                    <div class="nav-wrapper container ">
-                        @Html.ActionLink("Razor Cars", "Home", "Index", htmlAttributes: new { @class = "brand-logo", id = "logo-container" })
-                        <ul class="right hide-on-med-and-down">
-                            <li>Car Collection</li>
-                            <li>Rentals</li>
-                            <li>Rentals</li>
-                                <li>Rentals</li>
-                                <li>Rentals</li>
 
-                        </ul>
-                    </div>
-                </nav>
-            </div>*@
+
+        @*<seciton class="row-fluid">
+                <img style="min-height: 500px; width: 100%; overflow: hidden;" src="http://s16.postimg.org/puoo2hiol/Holding_car.png" />
+            </seciton>*@
+
+
+        <div id="top-navigation-bar-main" class="navbar secongmenu">
+            <nav class='silver accent-4' role="navigation">
+                <div class="nav-wrapper container ">
+                    @Html.ActionLink("Razor Cars", "Home", "Index", htmlAttributes: new { @class = "brand-logo", id = "logo-container" })
+                    <ul class="right hide-on-med-and-down">
+                        <li>Car Collection</li>
+                        <li>Rentals</li>
+                        <li>Rentals</li>
+                        <li>Rentals</li>
+                        <li>Rentals</li>
+
+                    </ul>
+                </div>
+            </nav>
+        </div>
     </header>
     <main>
         <div class="col s12 m8 l9">
@@ -129,15 +153,15 @@
         </div>
     </main>
 
-    <footer class="page-footer #d50000 red accent-4">
+    <footer class="page-footer #424242 grey darken-3">
         <div class="container">
             <div class="row">
                 <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
+                    <h5 class="black-text">Footer Content</h5>
                     <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
                 </div>
                 <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Links</h5>
+                    <h5 class="black-text">Links</h5>
                     <ul>
                         <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
                         <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
@@ -145,15 +169,10 @@
                         <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
                     </ul>
                 </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
-            <div class="container">
                 <p>&copy; @DateTime.Now.Year - Razor Cars</p>
             </div>
         </div>
     </footer>
-
 
     @Scripts.Render("~/bundles/jquery")
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.js"></script>
@@ -164,7 +183,37 @@
         $('.collapsible').collapsible();
 
         $(".dropdown-button").dropdown();
+
+        // Login box activation
+        $('.login-btn').click(function () {
+            /* Act on the event */
+            $('.login-btn').toggleClass('active');
+            $('.login-box').slideToggle();
+        });
+
+        $('.slider').slider({ full_width: true });
+
+        $('body').scrollspy({ target: ".navbar" });
+
+        // Add smooth scrolling to all links inside a navbar
+        $("#myNavbar a").on('click', function (event) {
+
+            // Prevent default anchor click behavior
+            event.preventDefault();
+
+            // Store hash (#)
+            var hash = this.hash;
+
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area (the speed of the animation)
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 800, function () {
+
+                // Add hash (#) to URL when done scrolling (default click behavior)
+                window.location.hash = hash;
+            });
+        });
     </script>
 </body>
-
 </html>

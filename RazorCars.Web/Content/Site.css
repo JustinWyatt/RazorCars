@@ -9,15 +9,13 @@
     flex: 1;
 }
 
-.make-this-flex{
-        display: flex;
-    }
+.make-this-flex {
+    display: flex;
+}
 
 .row-card {
     width: 100%;
 }
-
-
 
 .rental-history {
     margin-top: 50px;
@@ -28,27 +26,32 @@
     -webkit-filter: grayscale();
     filter: grayscale();
 }
+
 .slides {
-height: 500px !important;
+    height: 500px !important;
 }
-.slider  {
-height: 500px !important;
+
+.slider {
+    height: 500px !important;
 }
+
 .indicators {
-z-index:10;
+    z-index: 10;
 }
+
 .slider .indicators .indicator-item.active {
-background-color:#D50000;
+    background-color: #D50000;
 }
 
 
 @media all and (max-width: 600px) {
-.slider .randybanner {
-background-position-x:-810px !important;
+    .slider .randybanner {
+        background-position-x: -810px !important;
+    }
 }
-}
+
 .leftsideboxes {
-position: absolute;
+    position: absolute;
     z-index: 5;
     width: 1100px;
     margin-top: 60px;
@@ -57,8 +60,28 @@ position: absolute;
 }
 
 .banonmobile {
-  background-image:url('http://rdxsports.com/media/wysiwyg/pre-home-banner/Christmas_New_home.jpg');
-     width: 100%;
+    background-image: url('http://rdxsports.com/media/wysiwyg/pre-home-banner/Christmas_New_home.jpg');
+    width: 100%;
     height: 395px;
     background-position: center center;
+}
+
+
+.image-logo {
+    margin-left: 75px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    height: 75px;
+}
+
+div.col.s12.topNavInner.top-right-nav.right{
+    margin-left: 75px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    height: 75px;
+}
+nav.white.top-nav{
+        height:125px;
 }

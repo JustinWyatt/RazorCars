@@ -34,5 +34,47 @@ namespace RazorCars.Web.Controllers
             return Json(model);
         }
         
+        [HttpGet]
+        [Route("api/inventoriesapi/rentals")]
+        public IHttpActionResult RentalHistory(int id)
+        {
+            //Displays rental history for each inventory
+            var inventory = db.Inventories.Find(id);
+
+            var model = new InventoryVM
+            {
+                Description = inventory.CarType.Description,
+                Id = inventory.Id,
+                Make = inventory.CarType.Make,
+                Model = inventory.CarType.Model,
+                Year = inventory.CarType.Year,
+                TotalStock = inventory.Stock,
+                AvailableStock = inventory.Stock - inventory.Histories.Count(x => x.ReturnDate == null),
+                Histories = inventory.Histories.Select(x => new RentalHistoryVM
+                {
+                    Id = x.Id,
+                    RentalDate = x.RentDate,
+                    ReturnDate = x.ReturnDate
+                }).ToList()
+
+            };
+
+            return Json(model);
+        }
+
+        [HttpGet]
+        [Route("api/inventoriesapi/users")]
+        public IHttpActionResult Users()
+        {
+            return Json(db.Users.ToList());
+        }
+
+        [HttpGet]
+        [Route("api/inventoriesapi/user/id")]
+        public IHttpActionResult Users(int id)
+        {
+            var user = db.Users.Find(id);
+            return Json(user);
+        }
     }
 }

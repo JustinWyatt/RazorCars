@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 namespace RazorCars.Web.Models
 {
@@ -18,6 +19,7 @@ namespace RazorCars.Web.Models
         }
 
         public virtual Location Location { get; set; }
+        public virtual ICollection<Reservation> Reservations { get; set; }
 
     }
 
@@ -39,6 +41,7 @@ namespace RazorCars.Web.Models
         public DbSet<RentalHistory> RentalHistories { get; set; }
         public DbSet<Location> Locations { get; set; }
         public DbSet<Image> Images { get; set; }
+        public DbSet<Reservation> Reservations { get; set; }
 
     }
 }
