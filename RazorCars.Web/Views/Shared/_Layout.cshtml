@@ -8,151 +8,78 @@
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.css" />
 </head>
-
-@using Microsoft.AspNet.Identity
 <body>
     <header>
-        @*<nav class="#424242 grey darken-3 top-nav">
-                <ul>
-                    @Html.Partial("_LoginPartial")
-                </ul>
-            </nav>*@
+       
         <nav class="white top-nav">
-            <div class="nav-wrapper">
-                @*<div class="col s12 topNavInner left">
-                        <ul class="hide-on-med-and-down  phonenumber left">
-                            <li class="callnum"><a href="tel:+1 844 739 8326"> <i class="left small mdi-communication-call iconpoint"></i>+1 844 739 8326</a></li>
-                        </ul>
-                    </div>*@
-
+            <div class="nav-wrapper">                
                 <a href="#" class="brand-logo"><img class="image-logo" src="http://s18.postimg.org/7yjt4kajd/Razor_Cars_Logo.jpg" /></a>
-
-                <div class="col s12 topNavInner top-right-nav right">
+                <div class="col s12 topNavInner top-right-nav right" style="margin-right: 100px;">
                     <ul class="image-logo">
                         @*<li class="deviderright hide-on-small-only waves-effect waves-light"><a rel="nofollow" href="http://rdxsports.com/trade-inquiries/"><i class="left small mdi-social-group iconpoint"></i>Trade Inquiry</a></li>*@
                         @*<li class="deviderright waves-effect waves-light grey btn"><a rel="nofollow" href="javascript:;" class="login-btn notlogin "><i class="left small mdi-action-lock iconpoint"></i>Login</a></li>*@
                         @*<li class="deviderright waves-effect waves-light red btn"><a rel="nofollow" href="javascript:;" class="login-btn notlogin"><i class="left small mdi-action-lock iconpoint"></i>Sign Up</a>></li>*@
-                        <li><a>Rent</a></li>
-                        <li><a>Buy</a></li>
-                        <li><a>Location</a></li>
-                        <li><a>Business Rentals</a></li>
-                        <li><a>Customer Support</a></li>
-                        <li><a>About</a></li>
+                        <li><a style="color:black">Rent</a></li>
+                        <li><a style="color:black">Buy</a></li>
+                        <li><a style="color:black">Location</a>></li>
+                        <li><a style="color:black">Business Rentals</a></li>
+                        <li><a style="color:black">Customer Support</a></li>
+                        <li><a style="color:black">About</a></li>
 
-                        @*@if (Request.IsAuthenticated)
-                            {
-                                <li class="deviderright waves-effect waves-light">@User.Identity.GetUserName()</li>
-                            }*@
                     </ul>
                 </div>
             </div>
         </nav>
-
-        <!-- Top login drop down box -->
-        <div class="nav-wrapper login-box white-text" style="display:none;">
-            <div class="row">
-
-                <!-- login box inner first -->
-                <div class="col s12 m12 l4 center hide-on-med-and-down">
-                    <h4>Don't have Account..?</h4>
-                    <div class="sign-up-btn">
-                        @*<a class="waves-effect grey darken-4 waves-light btn" href="https://rdxsports.com/customer/account/login/">Create Account</a>
-                                    @Html.ActionLink("Create Account", "Register", "Account", htmlAttributes: new { @class = "waves-effect grey darken-4 waves-light btn" })
-                                </div>
-                            </div>
-
-
-                            <!-- login box inner third -->
-                            <div class="col s12 m12 l4 center">
-                                <h4>Already Registered..?</h4>
-                                <div class="login-form">
-                                    @Html.Partial("_LoginPartial")
-                                    @*<form action="https://rdxsports.com/customer/account/loginPost/" method="post" id="login-form">
-                                            <input name="form_key" type="hidden" value="c73fcHzhGNWlgg8Y" />
-                                            <!-- Email for login -->
-                                            <div class="input-field form-mini-login col s12">
-                                                <i class="mdi-communication-email prefix"></i>
-                                                <input autocomplete="off" type="text" name="login[username]" value="" id="email" class="mini-form-text-input grey-text text-darken-4 validate input-text required-entry validate-email" title="Email Address" />
-                                                <label for="email">Email Address</label>
-                                            </div>
-                                            <!-- Password for login -->
-                                            <div class="input-field form-mini-login col s12">
-                                                <i class="mdi-communication-vpn-key prefix"></i>
-                                                <input autocomplete="off" type="password" name="login[password]" class="password-field-pl input-text required-entry validate-password mini-form-text-input grey-text text-darken-4" id="pass" title="Password" />
-                                                <label for="pass">Password</label>
-                                            </div>
-                                            <div class="buttons-set right">
-                                                <a href="https://rdxsports.com/customer/account/forgotpassword/?easy_ajax=1" class="f-left white-text">Forgot Your Password?</a>
-                                                <button type="submit" class="waves-effect waves-light btn red accent-4" title="Login" name="send" id="send2"><span><span>Login</span></span></button>
-                                            </div>
-                                        </form>*@
-                    </div>
-                </div>
-
-                <div class="divider hide-on-large-only"></div>
-
-                <!-- login box inner first -->
-                <div class="col s12 m12 l4 center hide-on-large-only">
-                    <h4>Don't have Account..?</h4>
-                    <div class="sign-up-btn">
-                        @*<a class="waves-effect grey darken-4 waves-light btn" href="https://rdxsports.com/customer/account/login/">Create Account</a>*@
-                        @Html.ActionLink("Create Account", "Register", "Account", htmlAttributes: new { @class = "waves-effect grey darken-4 waves-light btn" })
-
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-
-        <div class="slider">
+        <div class="slider" style="position: relative">
             <ul class="slides">
                 <li>
-                    <img src="http://s16.postimg.org/puoo2hiol/Holding_car.png" /> <!-- random image -->
-                    <div class="caption center-align">
-                        <h1>Toy Cars For Rent</h1>
-                        @*<h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>*@
-                        <div>
-                            @Html.Partial("_ReservationFormPartial")
+                    @*<img id="slide-image" src="http://s16.postimg.org/puoo2hiol/Holding_car.png" />*@ <!-- random image -->
+                    @*<img style="position: absolute;" src="http://7-themes.com/data_images/out/14/6813798-toy-car-wallpaper.jpg"/>*@
+
+                    @*<img src="http://7-themes.com/data_images/out/39/6901993-toy-car-wallpaper.jpg"/>*@
+
+                    <img src="http://eskipaper.com/images/toy-miniature-car-1.jpg" />
+
+                    <div class="caption left-align">
+                        <div style="position: absolute; background-color: white; height: 450px; width: 500px; border-radius: 10px; margin-left: -100px; margin-top: -50px;" id="pic-form">
+                            @*@Html.Partial("_ReservationFormPartial")*@
+                            <form style="margin: 50px;">
+                                <div class="form-label" style="margin-top: 25px; margin-left: 20px; margin-right: 20px; color: black;">
+                                    <h5>Make A Reservation</h5>
+
+                                </div>
+                                <div class="input-field">
+                                    <input id="location-input" type="text" size="50" class="browser-default" autocomplete="on" style="color: black ">
+                                </div>
+                                <div class="input-field">
+                                    <input type="date" id="datepicker-rental" style="color: black">
+                                </div>
+                                <div class="input-field">
+                                    <input type="date" id="datepicker-return" style="color: black">
+                                </div>
+                                <label>Age</label>
+                                <select class="browser-default" style="color: black">
+                                    <option value="" disabled selected style="color: black ">Select Your Age</option>
+                                    @for (int i = 25; i <= 75; i++)
+                                    {
+                                        <option value="@i" style="color: black">@i</option>
+                                    }
+                                </select>
+                                @Html.ActionLink("Continue", "ContinueReservation", "Inventories")
+                            </form>
                         </div>
                     </div>
                 </li>
             </ul>
-
-        </div>
-
-
-
-        @*<seciton class="row-fluid">
-                <img style="min-height: 500px; width: 100%; overflow: hidden;" src="http://s16.postimg.org/puoo2hiol/Holding_car.png" />
-            </seciton>*@
-
-
-        <div id="top-navigation-bar-main" class="navbar secongmenu">
-            <nav class='silver accent-4' role="navigation">
-                <div class="nav-wrapper container ">
-                    @Html.ActionLink("Razor Cars", "Home", "Index", htmlAttributes: new { @class = "brand-logo", id = "logo-container" })
-                    <ul class="right hide-on-med-and-down">
-                        <li>Car Collection</li>
-                        <li>Rentals</li>
-                        <li>Rentals</li>
-                        <li>Rentals</li>
-                        <li>Rentals</li>
-
-                    </ul>
-                </div>
-            </nav>
         </div>
     </header>
     <main>
         <div class="col s12 m8 l9">
             <div class="container body-content">
                 @RenderBody()
-                <hr />
             </div>
         </div>
     </main>
-
     <footer class="page-footer #424242 grey darken-3">
         <div class="container">
             <div class="row">
@@ -173,12 +100,39 @@
             </div>
         </div>
     </footer>
-
     @Scripts.Render("~/bundles/jquery")
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.js"></script>
     @RenderSection("scripts", required: false)
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBB_vXSlQ4rcQrl3GEE5PDqWRe7rJbGXC0&libraries=places"></script>
+    <script src="//jashkenas.github.io/underscore/underscore-min.js"></script>
     <script>
+        function initialize() {
+            var input = document.getElementById('location-input');
+
+            // Create the autocomplete helper, and associate it with
+            // an HTML text input box.
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            var infowindow = new google.maps.InfoWindow();
+
+            // Get the full place details when the user selects a place from the
+            // list of suggestions.
+            google.maps.event.addListener(autocomplete, 'place_changed', function () {
+                //infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + 'Place ID: ' + place.place_id + '<br>' + place.formatted_address + '</div>');
+                infowindow.open(this);
+            })
+            var lat = 0;
+            var long = 0;
+
+            $.ajax({
+                url: "https://maps.googleapis.com/maps/api/geocode/json?address="+autocomplete+"+&key=AIzaSyAhXmpctyyUztVtePvMKjrrpw5PQ8e7Gt8",
+                method: "GET"
+            }).done(function (data) {
+                $(this).addClass("done");
+            });
+        }
+        // Run the initialize function when the window has finished loading.
+        google.maps.event.addDomListener(window, 'load', initialize);
+
         // Initialize collapsible
         $('.collapsible').collapsible();
 
@@ -191,12 +145,21 @@
             $('.login-box').slideToggle();
         });
 
+
+        $(function () {
+            $("#datepicker-rental   ").datepicker();
+        });
+
+        $(function () {
+            $("#datepicker-return").datepicker();
+        });
+
         $('.slider').slider({ full_width: true });
 
         $('body').scrollspy({ target: ".navbar" });
 
         // Add smooth scrolling to all links inside a navbar
-        $("#myNavbar a").on('click', function (event) {
+        $("#myNavbar a").click(function (event) {
 
             // Prevent default anchor click behavior
             event.preventDefault();
